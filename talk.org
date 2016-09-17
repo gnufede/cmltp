@@ -1,0 +1,53 @@
+#+title: ¿Pueden programar las máquinas por nosotros?
+#+AUTHOR: Federico Mon
+#+EMAIL: gnu.fede@gmail.com
+#+DATE: 2016-10-08
+#+OPTIONS: num:nil toc:nil todo:nil
+# #+REVEAL_ROOT: ./reveal.js/
+#+REVEAL_ROOT: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/
+#+REVEAL_EXTRA_CSS: ./custom.css
+#+REVEAL_SLIDE_NUMBER: nil
+#+REVEAL_THEME: white
+# #+REVEAL_BACKGROUND: #272822
+
+* 
+   :PROPERTIES:
+   :reveal_background: #f2600f
+   :END:
+   #+NAME:   fig:ticketea
+   [[./img/logo-ticketea-white.svg]]
+
+
+* First of all
+
+** What is "To program"
+*** Source code
+#+BEGIN_SRC python
+def x(a, b, c):
+    return (a + b) * c
+#+END_SRC
+*** Bytecode
+#+BEGIN_SRC python
+>>> x = lambda a,b,c: (a + b) * c
+>>> x.__code__.co_code                                                                                                                             
+b'|\x00\x00|\x01\x00\x17|\x02\x00\x14S'
+#+END_SRC
+*** AST
+#+NAME:   fig:AST
+[[./img/binop.png]]
+
+* Lots of fuzz with Deep Learning lately
+** Alphago
+#+NAME:   fig:Alphagologo
+[[./img/Alphago_logo_Reversed.svg]]
+
+** Wired Cover Jun 2016
+#+NAME:   fig:wiredcover2016
+[[./img/wired_cover.png]]
+#+BEGIN_NOTES
+  * Portada de Wired de Junio de este año (2016)
+#+END_NOTES
+
+* ANN
+
+* caca
