@@ -8,6 +8,7 @@
 #+REVEAL_EXTRA_CSS: ./custom.css
 #+REVEAL_SLIDE_NUMBER: nil
 #+REVEAL_THEME: white
+#+REVEAL_TRANS: linear
 # #+REVEAL_BACKGROUND: #272822
 
 * 
@@ -18,9 +19,14 @@
    [[./img/logo-ticketea-white.svg]]
 
 
-* First of all
+* First of all...
+** Why automate your work?
+[[https://www.reddit.com/r/cscareerquestions/comments/4km3yc/finally_fired_after_6_years/][Finally fired after 6 years]]
+#+NAME:   fig:Fired_after_6_years
+[[./img/Automate.png]]
 
-** What is "To program"
+* Second of all
+** What is "To program"?
 *** Source code
 #+BEGIN_SRC python
 def x(a, b, c):
@@ -46,8 +52,125 @@ b'|\x00\x00|\x01\x00\x17|\x02\x00\x14S'
 [[./img/wired_cover.png]]
 #+BEGIN_NOTES
   * Portada de Wired de Junio de este año (2016)
+  * Por lo que vemos en la portada, Wired debe haber conseguido generar portadas
+    por ordenador antes o después de haber echado a su diseñador. no?
 #+END_NOTES
 
-* ANN
+* Summary
+ * Answer
+ * ASTs
+ * Genetic Programming
+ * Neural Networks
+ * Motivation/Goal
+#+BEGIN_NOTES
+  * Indice alfabético, la respuesta irá al final
+#+END_NOTES
+* A very small example
+** Basic Multiplexor
+#+NAME:   fig:NO
+[[./img/Multiplexer.png]]
 
-* caca
+** 
+#+BEGIN_SRC python
+(a and not s) or (b and s)
+#+END_SRC
+* AST
+** 
+#+BEGIN_SRC python
+>>> import ast
+>>> tree = ast.parse("(a and not s) or (b and s)")
+>>> expr = ast.Expression(tree.body[0].value)
+>>> compiled = compile(expr, filename="<ast>", mode="eval")
+>>> a = True
+>>> b = False
+>>> s = True
+>>> d = eval(compiled)
+>>> print(d)
+#+END_SRC
+#+BEGIN_SRC python
+False
+#+END_SRC
+** 
+#+BEGIN_SRC python
+>>> import meta
+>>> source_from_ast = meta.dump_python_source(tree)
+#+END_SRC
+#+BEGIN_SRC python
+((a and (not s)) or (b and s))
+#+END_SRC
+** 
+#+BEGIN_SRC python
+from ast import (
+    BoolOp, UnaryOp, Or, And, Not, Name, Load, Module, Expr,
+    NodeTransformer, NodeVisitor, copy_location, Subscript, Index, Str, dump
+)
+#+END_SRC
+** 
+#+BEGIN_SRC python
+def get_variable(variable_name):
+    assert variable_name in variable_names
+    return Name(id=variable_name, ctx=Load())
+
+def get_not(tree):
+    return UnaryOp(op=Not(), operand=tree)
+
+def get_or(args):
+    assert len(args) > 1
+    return BoolOp(Or(), args)
+#+END_SRC
+** TODO Visitor
+** Bibliography
+ * [[https://docs.python.org/2/library/ast.html][Official AST documentation]]
+ * [[http://greentreesnakes.readthedocs.io/en/latest/][Green Tree Snakes - the missing Python AST docs]]
+* Genetic Programming
+** A part of Genetic Algorithms
+ * Start with a population
+ * Evaluate them
+ * Mix them
+ * Mutate them
+ * Select the next generation
+ * Repeat
+** Each individual
+ * Has its own DNA
+ * The DNA in our case is a representation of a program
+
+** Evaluation
+ * In our case, it could be how many unit tests the program passes
+ * Or a function that allows you to find the best match for the program you want.
+
+** TODO Mix them
+
+** TODO Mutate them
+** TODO Genetic Programming approach
+*** Sample execution
+** TODO It's already written
+*** DEAP
+* TODO Neural Networks
+** Mimics the brain
+** Input layer, hidden layers, output layer
+** Uses lot of data as training to learn
+** Learns gradually to find the correct answer
+** Examples
+* TODO Motivation/Goal
+** Use ASTs and unit tests as data
+** In GP, ASTs would be DNA and unit tests evaluation.
+** Could we input a Neural Network lots of ASTs along with parameters and outputs
+** And train it to generate the appropiate AST depending on the parameters and outputs needed?
+* TODO Answer
+** 
+:PROPERTIES:
+:reveal_background: #000000
+:END:
+#+NAME:   fig:NO
+[[./img/no.png]]
+
+** Programs are not linear
+*** Divide and conquer
+**** Functions call other functions
+*** Programs can be very big and complex
+** Can Genetic Programming be the answer?
+*** It tooks lots of time to find the appropiate small function, so not suitable for big programs.
+** Can Neural Networks be the answer?
+*** They can learn to solve specific problems
+*** But programming is not an specific problem
+*** In some years, it can evolve enough to be able to reason.
