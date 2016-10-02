@@ -42,6 +42,53 @@ b'|\x00\x00|\x01\x00\x17|\x02\x00\x14S'
 #+NAME:   fig:AST
 [[./img/binop.png]]
 
+* TDD
+
+** 
+#+BEGIN_SRC python
+def test_sort(self):
+    my_list = [4, 3, 2, 0]
+    my_list.sort()
+    self.assertEqual(my_list, [0, 2, 3, 4])
+#+END_SRC
+
+** 
+#+BEGIN_SRC python
+class myList(list):
+    def sort(self):
+        return self.reverse()
+__builtins__.list = myList
+
+def test_sort(self):
+    my_list = list((4, 3, 2, 0))
+    my_list.sort()
+    self.assertEqual(my_list, list((0, 2, 3, 4)))
+#+END_SRC
+
+**  
+#+BEGIN_SRC python
+def test_sort(self):
+    my_list = list((3, 4, 2, 0))
+    my_list.sort()
+    self.assertEqual(my_list, list((0, 2, 3, 4)))
+#+END_SRC
+
+** 
+#+BEGIN_SRC python
+class myList(list):
+    def sort(self):
+        x = list(self[-1], self[-2], self[0], self[1])
+        self[0] = x[0]
+        self[1] = x[1]
+        self[2] = x[2]
+        self[3] = x[3]
+__builtins__.list = myList
+
+def test_sort(self):
+    my_list = list((3, 4, 2, 0))
+    my_list.sort()
+    self.assertEqual(my_list, list((0, 2, 3, 4)))
+#+END_SRC
 * Lots of fuzz with Deep Learning lately
 ** Alphago
 #+NAME:   fig:Alphagologo
@@ -56,6 +103,7 @@ b'|\x00\x00|\x01\x00\x17|\x02\x00\x14S'
     por ordenador antes o después de haber echado a su diseñador. no?
 #+END_NOTES
 
+* Can machines do TDD?
 * Summary
  * Answer
  * ASTs
@@ -71,9 +119,23 @@ b'|\x00\x00|\x01\x00\x17|\x02\x00\x14S'
 [[./img/Multiplexer.png]]
 
 ** 
+#+BEGIN_SRC bash
+A B Sel | Out
+-------------
+0 0   0 |   0
+0 0   1 |   0
+0 1   0 |   0
+0 1   1 |   1
+1 0   0 |   1
+1 0   1 |   0
+1 1   0 |   1
+1 1   1 |   1 
+#+END_SRC
+** 
 #+BEGIN_SRC python
 (a and not s) or (b and s)
 #+END_SRC
+
 * AST
 ** 
 #+BEGIN_SRC python
@@ -107,64 +169,143 @@ from ast import (
 #+END_SRC
 ** 
 #+BEGIN_SRC python
-def get_variable(variable_name):
+def create_variable(variable_name):
     assert variable_name in variable_names
     return Name(id=variable_name, ctx=Load())
 
-def get_not(tree):
+def create_not(tree):
     return UnaryOp(op=Not(), operand=tree)
 
-def get_or(args):
+def create_or(args):
     assert len(args) > 1
     return BoolOp(Or(), args)
 #+END_SRC
-** TODO Visitor
+** Visitor and Transformer
+*** 
+#+BEGIN_SRC python
+class Visitor(NodeVisitor):
+    length = 0
+
+    def generic_visit(self, node):
+        self.length += 1
+        NodeVisitor.generic_visit(self, node)
+#+END_SRC
+*** 
+#+BEGIN_SRC python
+def get_len(tree):
+    v = Visitor()
+    v.visit(tree)
+    return v.length
+#+END_SRC
 ** Bibliography
  * [[https://docs.python.org/2/library/ast.html][Official AST documentation]]
  * [[http://greentreesnakes.readthedocs.io/en/latest/][Green Tree Snakes - the missing Python AST docs]]
 * Genetic Programming
-** A part of Genetic Algorithms
+** Individuals
+ * Each one has its own DNA
+ * In nature: "...GATTACA..."
+ * In Genetic Algorithms, it can be "...0010100..."
+ * In our case, let's say it's: "OR AND A NOT S AND B S"
+#+BEGIN_NOTES
+  * Notación Polaca
+#+END_NOTES
+** As Genetic Algorithms
  * Start with a population
  * Evaluate them
+ * Select some individuals
  * Mix them
  * Mutate them
- * Select the next generation
  * Repeat
-** Each individual
- * Has its own DNA
- * The DNA in our case is a representation of a program
-
 ** Evaluation
- * In our case, it could be how many unit tests the program passes
- * Or a function that allows you to find the best match for the program you want.
+ * In our case, how many unit tests the program passes
+ * For our multiplexor, there are only 8 unit tests
 
-** TODO Mix them
+** Mix them
+You would need to extract two parts of two trees and interchange them.
+I didn't do this part.
 
-** TODO Mutate them
-** TODO Genetic Programming approach
-*** Sample execution
+** Mutate them
+*** 
+#+BEGIN_SRC python
+(a and not s) or (b or s)  # (5)
+(a and not s) or (b and s) # (8)
+#+END_SRC
+*** Transformer
+*** 
+#+BEGIN_SRC python
+class Mutator(NodeTransformer):
+    depth = 0
+
+    def some_visit(self, node):
+        if self.depth > 2 and random.randrange(9) > 5:
+            return create_something(max_depth=3)
+        else:
+            self.generic_visit(node)
+            return node
+
+    def visit_Name(self, node):
+        self.depth += 1
+        return self.some_visit(node)
+
+    def visit_UnaryOp(self, node):
+        self.depth += 1
+        return self.some_visit(node)
+
+    def visit_BoolOp(self, node):
+        self.depth += 1
+        return self.some_visit(node)
+#+END_SRC
+*** 
+#+BEGIN_SRC python
+def mutate(tree):
+    return Mutator().visit(tree)
+#+END_SRC
+
+** Genetic Programming Conclusions
+*** TODO Sample execution
+*** Is it better than random?
+**** Get to the solution generating random trees 100 times:
+average: 3.40 secs
+**** Genetic programming:
+***** Population size 100:
+average: 3.51 secs
+***** Population size 10:
+average: 4.63 secs
 ** TODO It's already written
 *** DEAP
-* TODO Neural Networks
+* Neural Networks
 ** Mimics the brain
+** Use lots of data as training to learn
 ** Input layer, hidden layers, output layer
-** Uses lot of data as training to learn
-** Learns gradually to find the correct answer
-** Examples
+** Hidden layers can be very complex, depending on your needs
+** Intuition
+*** Train the NN with inputs and outputs (truth tables) along with their corresponding expressions
+** Not Done :(
 * TODO Motivation/Goal
 ** Use ASTs and unit tests as data
 ** In GP, ASTs would be DNA and unit tests evaluation.
 ** Could we input a Neural Network lots of ASTs along with parameters and outputs
 ** And train it to generate the appropiate AST depending on the parameters and outputs needed?
-* TODO Answer
+* Answer
 ** 
 :PROPERTIES:
 :reveal_background: #000000
 :END:
 #+NAME:   fig:NO
 [[./img/no.png]]
+** Right answer can be surrounded of very wrong answers
+** Computers not yet capable to "reason"
+** Programming requires "Divide and Conquer"
+** Is TDD enough?
+** That's just for boolean logic
+What about detecting infinite loops in huge programs?
+** What is being done?
+*** Python interpreter in ML (Predicts the output of the program)
+**** https://github.com/wojciechz/learning_to_execute
 
-** Programs are not linear
+** 
+** 
+** Program outputs are not linear
 *** Divide and conquer
 **** Functions call other functions
 *** Programs can be very big and complex
