@@ -1,4 +1,4 @@
-#+title: ¿Pueden programar las máquinas por nosotros?
+#+title: ¿Puede la máquina aprender a programar?
 #+AUTHOR: Federico Mon
 #+EMAIL: gnu.fede@gmail.com
 #+DATE: 2016-10-08
@@ -20,13 +20,12 @@
 
 
 * First of all...
-** Why automate your work?
+** What will you do once you automate all your work?
 [[https://www.reddit.com/r/cscareerquestions/comments/4km3yc/finally_fired_after_6_years/][Finally fired after 6 years]]
 #+NAME:   fig:Fired_after_6_years
 [[./img/Automate.png]]
 
-* Second of all
-** What is "To program"?
+* What is "To program"?
 *** Source code
 #+BEGIN_SRC python
 def x(a, b, c):
@@ -65,7 +64,7 @@ def test_sort(self):
     self.assertEqual(my_list, list((0, 2, 3, 4)))
 #+END_SRC
 
-**  
+** 
 #+BEGIN_SRC python
 def test_sort(self):
     my_list = list((3, 4, 2, 0))
@@ -104,15 +103,6 @@ def test_sort(self):
 #+END_NOTES
 
 * Can machines do TDD?
-* Summary
- * Answer
- * ASTs
- * Genetic Programming
- * Neural Networks
- * Motivation/Goal
-#+BEGIN_NOTES
-  * Indice alfabético, la respuesta irá al final
-#+END_NOTES
 * A very small example
 ** Basic Multiplexor
 #+NAME:   fig:NO
@@ -135,6 +125,10 @@ A B Sel | Out
 #+BEGIN_SRC python
 (a and not s) or (b and s)
 #+END_SRC
+** AST
+#+NAME:   fig:AST_multi
+[[./img/multiplexer_ast.png]]
+
 
 * AST
 ** 
@@ -202,14 +196,17 @@ def get_len(tree):
  * [[http://greentreesnakes.readthedocs.io/en/latest/][Green Tree Snakes - the missing Python AST docs]]
 * Genetic Programming
 ** Individuals
+ #+ATTR_REVEAL: :frag (appear)
  * Each one has its own DNA
  * In nature: "...GATTACA..."
  * In Genetic Algorithms, it can be "...0010100..."
  * In our case, let's say it's: "OR AND A NOT S AND B S"
+ * So, why not simply the python AST?
 #+BEGIN_NOTES
   * Notación Polaca
 #+END_NOTES
 ** As Genetic Algorithms
+ #+ATTR_REVEAL: :frag (appear)
  * Start with a population
  * Evaluate them
  * Select some individuals
@@ -217,6 +214,7 @@ def get_len(tree):
  * Mutate them
  * Repeat
 ** Evaluation
+ #+ATTR_REVEAL: :frag (appear)
  * In our case, how many unit tests the program passes
  * For our multiplexor, there are only 8 unit tests
 
@@ -261,23 +259,47 @@ def mutate(tree):
     return Mutator().visit(tree)
 #+END_SRC
 
-** Genetic Programming Conclusions
-*** TODO Sample execution
+** Conclusions
 *** Is it better than random?
-**** Get to the solution generating random trees 100 times:
-average: 3.40 secs
-**** Genetic programming:
-***** Population size 100:
-average: 3.51 secs
-***** Population size 10:
-average: 4.63 secs
-** TODO It's already written
+*** Genetic programming results:
+    #+ATTR_REVEAL: :frag (appear)
+    * Population size 100: average: 3.51 secs
+    * Population size 10: average: 4.63 secs
+*** Randomly generated trees:
+    #+ATTR_REVEAL: :frag (appear)
+    Average 100 executions: 3.40 secs
+** Good news
 *** DEAP
+
 * Neural Networks
 ** Mimics the brain
 ** Use lots of data as training to learn
 ** Input layer, hidden layers, output layer
+** 
+#+NAME:   fig:Neural network
+[[./img/neural_network.jpg]]
 ** Hidden layers can be very complex, depending on your needs
+** 
+#+ATTR_REVEAL: :frag (appear)
+#+NAME:   fig:a man is talking on a cell phone near a building
+[[./img/nn_ex1.jpg]]
+ * a man is talking on a cell phone near a building.
+** 
+#+ATTR_REVEAL: :frag (appear)
+#+NAME:   fig:a white dog is running on gravel away from two people and a black and brown dog
+[[./img/nn_ex2.jpg]]
+ * a white dog is running on gravel away from two people and a black and brown dog.
+** 
+#+ATTR_REVEAL: :frag (appear)
+#+NAME:   fig:a man is sorting his fruit at a fruit stand
+[[./img/nn_ex3.jpg]]
+ * a man is sorting his fruit at a fruit stand
+** 
+#+NAME:   fig:captioning_neural_network
+[[./img/neural_network_image.jpg]]
+** 
+#+NAME:   fig:coder_neural_network
+[[./img/neural_network_code.jpg]]
 ** Intuition
 *** Train the NN with inputs and outputs (truth tables) along with their corresponding expressions
 ** Not Done :(
@@ -293,6 +315,7 @@ average: 4.63 secs
 :END:
 #+NAME:   fig:NO
 [[./img/no.png]]
+** Not yet at least
 ** Right answer can be surrounded of very wrong answers
 ** Computers not yet capable to "reason"
 ** Programming requires "Divide and Conquer"
