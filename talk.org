@@ -25,7 +25,7 @@
 #+NAME:   fig:Fired_after_6_years
 [[./img/Automate.png]]
 
-* What is "To program"?
+* What is “To program”?
 *** Source code
 #+BEGIN_SRC python
 def x(a, b, c):
@@ -88,6 +88,9 @@ def test_sort(self):
     my_list.sort()
     self.assertEqual(my_list, list((0, 2, 3, 4)))
 #+END_SRC
+** Program testing can be used to show the presence of bugs, but never to show their absence!
+Edgar Dijkstra
+
 * Lots of fuzz with Deep Learning lately
 ** Alphago
 #+NAME:   fig:Alphagologo
@@ -128,7 +131,6 @@ A B Sel | Out
 ** AST
 #+NAME:   fig:AST_multi
 [[./img/multiplexer_ast.png]]
-
 
 * AST
 ** 
@@ -220,9 +222,14 @@ def get_len(tree):
 
 ** Mix them
 You would need to extract two parts of two trees and interchange them.
-I didn't do this part.
+** 
+#+NAME:   fig:Genetic Programming Mix
+[[./img/genetic_mix.png]]
 
 ** Mutate them
+*** 
+#+NAME:   fig:Genetic Programming Mutation
+[[./img/genetic_mutate.png]]
 *** 
 #+BEGIN_SRC python
 (a and not s) or (b or s)  # (5)
@@ -259,17 +266,9 @@ def mutate(tree):
     return Mutator().visit(tree)
 #+END_SRC
 
-** Conclusions
-*** Is it better than random?
-*** Genetic programming results:
-    #+ATTR_REVEAL: :frag (appear)
-    * Population size 100: average: 3.51 secs
-    * Population size 10: average: 4.63 secs
-*** Randomly generated trees:
-    #+ATTR_REVEAL: :frag (appear)
-    Average 100 executions: 3.40 secs
 ** Good news
 *** DEAP
+    https://github.com/DEAP/deap
 
 * Neural Networks
 ** Mimics the brain
@@ -300,14 +299,24 @@ def mutate(tree):
 ** 
 #+NAME:   fig:coder_neural_network
 [[./img/neural_network_code.jpg]]
-** Intuition
-*** Train the NN with inputs and outputs (truth tables) along with their corresponding expressions
-** Not Done :(
-* TODO Motivation/Goal
-** Use ASTs and unit tests as data
-** In GP, ASTs would be DNA and unit tests evaluation.
-** Could we input a Neural Network lots of ASTs along with parameters and outputs
-** And train it to generate the appropiate AST depending on the parameters and outputs needed?
+** Not Accomplished :(
+
+* “When in doubt, use brute force”
+Ken Thompson
+** Is it any better than random?
+#+ATTR_REVEAL: :frag (appear)
+   * We should find out
+   * Let's generate random trees until we reach our goal.
+** 
+  #+NAME:   fig:madness
+  [[./img/madness.jpg]]
+** Genetic programming results:
+    #+ATTR_REVEAL: :frag (appear)
+    * Population size 100: average: 3.51 secs
+    * Population size 10: average: 4.63 secs
+** Random trees:
+    #+ATTR_REVEAL: :frag (appear)
+    Average 100 executions: 3.40 secs
 * Answer
 ** 
 :PROPERTIES:
@@ -316,25 +325,17 @@ def mutate(tree):
 #+NAME:   fig:NO
 [[./img/no.png]]
 ** Not yet at least
-** Right answer can be surrounded of very wrong answers
+** “In the discrete world of computing, there is no meaningful metric in which "small" changes and "small" effects go hand in hand, and there never will be.”
+Edgar Dijkstra
+** Perfect is the enemy of good
+    #+ATTR_REVEAL: :frag (appear)
+    Voltaire
 ** Computers not yet capable to "reason"
 ** Programming requires "Divide and Conquer"
-** Is TDD enough?
 ** That's just for boolean logic
 What about detecting infinite loops in huge programs?
+** How do we demonstrate the absence of bugs?
 ** What is being done?
 *** Python interpreter in ML (Predicts the output of the program)
 **** https://github.com/wojciechz/learning_to_execute
 
-** 
-** 
-** Program outputs are not linear
-*** Divide and conquer
-**** Functions call other functions
-*** Programs can be very big and complex
-** Can Genetic Programming be the answer?
-*** It tooks lots of time to find the appropiate small function, so not suitable for big programs.
-** Can Neural Networks be the answer?
-*** They can learn to solve specific problems
-*** But programming is not an specific problem
-*** In some years, it can evolve enough to be able to reason.
