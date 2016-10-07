@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>¿Puede la máquina aprender a programar?</title>
+<title>Can machines learn to program?</title>
 <meta name="author" content="(Federico Mon)"/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.css"/>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/white.css" id="theme"/>
+<link rel="stylesheet" href="./reveal.js/css/theme/white.css" id="theme"/>
 
 <link rel="stylesheet" href="./custom.css"/>
 
@@ -19,7 +19,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.css';
+        link.href = './reveal.js/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -27,7 +27,7 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">¿Puede la máquina aprender a programar?</h1><h2 class="author">Federico Mon</h2><h2 class="date">2016-10-08</h2><p class="date">Created: 2016-10-06 Thu 20:55</p>
+<section id="sec-title-slide"><h1 class="title">Can machines learn to program?</h1><h2 class="author">Federico Mon</h2><h2 class="date">2016-10-08</h2><p class="date">Created: 2016-10-07 Fri 08:56</p>
 </section>
 
 <section>
@@ -209,9 +209,9 @@ por ordenador antes o después de haber echado a su diseñador. no?</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline22">
-<h2 id="orgheadline22">A very small example</h2>
-<div class="outline-text-2" id="text-orgheadline22">
+<section id="slide-orgheadline24">
+<h2 id="orgheadline24">A very small example</h2>
+<div class="outline-text-2" id="text-orgheadline24">
 </div></section>
 <section id="slide-orgheadline18">
 <h3 id="orgheadline18">Basic Multiplexor</h3>
@@ -254,16 +254,29 @@ por ordenador antes o después de haber echado a su diseñador. no?</li>
 <p><img src="./img/multiplexer_ast.png" alt="multiplexer_ast.png" />
 </p>
 </div>
+</section>
+<section id="slide-orgheadline22">
+<h3 id="orgheadline22"></h3>
 
+<div id="orgparagraph8" class="figure">
+<p><img src="./img/prefix_notation.png" alt="prefix_notation.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgheadline23">
+<h3 id="orgheadline23">Prefix notation</h3>
+<p>
+OR AND A NOT S AND B S
+</p>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline31">
-<h2 id="orgheadline31">AST</h2>
-<div class="outline-text-2" id="text-orgheadline31">
+<section id="slide-orgheadline32">
+<h2 id="orgheadline32">AST</h2>
+<div class="outline-text-2" id="text-orgheadline32">
 </div></section>
-<section id="slide-orgheadline23">
-<h3 id="orgheadline23"></h3>
+<section id="slide-orgheadline25">
+<h3 id="orgheadline25"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-python">&gt;&gt;&gt; <span style="color: #3a81c3; font-weight: bold;">import</span> ast
@@ -283,8 +296,8 @@ por ordenador antes o después de haber echado a su diseñador. no?</li>
 </pre>
 </div>
 </section>
-<section id="slide-orgheadline24">
-<h3 id="orgheadline24"></h3>
+<section id="slide-orgheadline26">
+<h3 id="orgheadline26"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-python">&gt;&gt;&gt; <span style="color: #3a81c3; font-weight: bold;">import</span> meta
@@ -297,8 +310,8 @@ por ordenador antes o después de haber echado a su diseñador. no?</li>
 </pre>
 </div>
 </section>
-<section id="slide-orgheadline25">
-<h3 id="orgheadline25"></h3>
+<section id="slide-orgheadline27">
+<h3 id="orgheadline27"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">from</span> ast <span style="color: #3a81c3; font-weight: bold;">import</span> <span style="color: #3a81c3;">(</span>
@@ -308,8 +321,8 @@ por ordenador antes o después de haber echado a su diseñador. no?</li>
 </pre>
 </div>
 </section>
-<section id="slide-orgheadline26">
-<h3 id="orgheadline26"></h3>
+<section id="slide-orgheadline28">
+<h3 id="orgheadline28"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">create_variable</span><span style="color: #3a81c3;">(</span>variable_name<span style="color: #3a81c3;">)</span>:
@@ -325,12 +338,12 @@ por ordenador antes o después de haber echado a su diseñador. no?</li>
 </pre>
 </div>
 </section>
-<section id="slide-orgheadline29">
-<h3 id="orgheadline29">Visitor and Transformer</h3>
-<div class="outline-text-3" id="text-orgheadline29">
+<section id="slide-orgheadline31">
+<h3 id="orgheadline31">Visitor and Transformer</h3>
+<div class="outline-text-3" id="text-orgheadline31">
 </div></section>
-<section id="slide-orgheadline27">
-<h4 id="orgheadline27"></h4>
+<section id="slide-orgheadline29">
+<h4 id="orgheadline29"></h4>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Visitor</span><span style="color: #3a81c3;">(</span>NodeVisitor<span style="color: #3a81c3;">)</span>:
@@ -342,8 +355,8 @@ por ordenador antes o después de haber echado a su diseñador. no?</li>
 </pre>
 </div>
 </section>
-<section id="slide-orgheadline28">
-<h4 id="orgheadline28"></h4>
+<section id="slide-orgheadline30">
+<h4 id="orgheadline30"></h4>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">get_len</span><span style="color: #3a81c3;">(</span>tree<span style="color: #3a81c3;">)</span>:
@@ -353,22 +366,14 @@ por ordenador antes o después de haber echado a su diseñador. no?</li>
 </pre>
 </div>
 </section>
-<section id="slide-orgheadline30">
-<h3 id="orgheadline30">Bibliography</h3>
-<ul>
-<li><a href="https://docs.python.org/2/library/ast.html">Official AST documentation</a></li>
-<li><a href="http://greentreesnakes.readthedocs.io/en/latest/">Green Tree Snakes - the missing Python AST docs</a></li>
-
-</ul>
-</section>
 </section>
 <section>
-<section id="slide-orgheadline46">
-<h2 id="orgheadline46">Genetic Programming</h2>
-<div class="outline-text-2" id="text-orgheadline46">
+<section id="slide-orgheadline45">
+<h2 id="orgheadline45">Genetic Programming</h2>
+<div class="outline-text-2" id="text-orgheadline45">
 </div></section>
-<section id="slide-orgheadline32">
-<h3 id="orgheadline32">Individuals</h3>
+<section id="slide-orgheadline33">
+<h3 id="orgheadline33">Individuals</h3>
 <ul>
 <li class="fragment appear">Each one has its own DNA</li>
 <li class="fragment appear">In nature: "&#x2026;GATTACA&#x2026;"</li>
@@ -385,8 +390,8 @@ por ordenador antes o después de haber echado a su diseñador. no?</li>
 
 </aside>
 </section>
-<section id="slide-orgheadline33">
-<h3 id="orgheadline33">As Genetic Algorithms</h3>
+<section id="slide-orgheadline34">
+<h3 id="orgheadline34">As Genetic Algorithms</h3>
 <ul>
 <li class="fragment appear">Start with a population</li>
 <li class="fragment appear">Evaluate them</li>
@@ -397,8 +402,8 @@ por ordenador antes o después de haber echado a su diseñador. no?</li>
 
 </ul>
 </section>
-<section id="slide-orgheadline34">
-<h3 id="orgheadline34">Evaluation</h3>
+<section id="slide-orgheadline35">
+<h3 id="orgheadline35">Evaluation</h3>
 <ul>
 <li class="fragment appear">In our case, how many unit tests the program passes</li>
 <li class="fragment appear">For our multiplexor, there are only 8 unit tests</li>
@@ -406,16 +411,16 @@ por ordenador antes o después de haber echado a su diseñador. no?</li>
 </ul>
 
 </section>
-<section id="slide-orgheadline35">
-<h3 id="orgheadline35">Mix them</h3>
+<section id="slide-orgheadline36">
+<h3 id="orgheadline36">Mix them</h3>
 <p>
 You would need to extract two parts of two trees and interchange them.
 </p>
 </section>
-<section id="slide-orgheadline36">
-<h3 id="orgheadline36"></h3>
+<section id="slide-orgheadline37">
+<h3 id="orgheadline37"></h3>
 
-<div id="orgparagraph8" class="figure">
+<div id="orgparagraph9" class="figure">
 <p><img src="./img/genetic_mix.png" alt="genetic_mix.png" />
 </p>
 </div>
@@ -425,21 +430,12 @@ You would need to extract two parts of two trees and interchange them.
 <h3 id="orgheadline42">Mutate them</h3>
 <div class="outline-text-3" id="text-orgheadline42">
 </div></section>
-<section id="slide-orgheadline37">
-<h4 id="orgheadline37"></h4>
-
-<div id="orgparagraph9" class="figure">
-<p><img src="./img/genetic_mutate.png" alt="genetic_mutate.png" />
-</p>
-</div>
-</section>
 <section id="slide-orgheadline38">
 <h4 id="orgheadline38"></h4>
-<div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #3a81c3;">(</span>a <span style="color: #3a81c3; font-weight: bold;">and</span> <span style="color: #3a81c3; font-weight: bold;">not</span> s<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">or</span> <span style="color: #3a81c3;">(</span>b <span style="color: #3a81c3; font-weight: bold;">or</span> s<span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">(5)</span>
-<span style="color: #3a81c3;">(</span>a <span style="color: #3a81c3; font-weight: bold;">and</span> <span style="color: #3a81c3; font-weight: bold;">not</span> s<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">or</span> <span style="color: #3a81c3;">(</span>b <span style="color: #3a81c3; font-weight: bold;">and</span> s<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">(8)</span>
-</pre>
+<div id="orgparagraph10" class="figure">
+<p><img src="./img/genetic_mutate.png" alt="genetic_mutate.png" />
+</p>
 </div>
 </section>
 <section id="slide-orgheadline39">
@@ -483,47 +479,47 @@ You would need to extract two parts of two trees and interchange them.
 </div>
 
 </section>
-<section id="slide-orgheadline43">
-<h3 id="orgheadline43">Conclusions</h3>
-</section>
-<section id="slide-orgheadline45">
-<h3 id="orgheadline45">Good news</h3>
-<div class="outline-text-3" id="text-orgheadline45">
-</div></section>
 <section id="slide-orgheadline44">
-<h4 id="orgheadline44">DEAP</h4>
+<h3 id="orgheadline44">Good news</h3>
+<div class="outline-text-3" id="text-orgheadline44">
+</div></section>
+<section id="slide-orgheadline43">
+<h4 id="orgheadline43">DEAP</h4>
+<p>
+<a href="https://github.com/DEAP/deap">https://github.com/DEAP/deap</a>
+</p>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline60">
-<h2 id="orgheadline60">Neural Networks</h2>
-<div class="outline-text-2" id="text-orgheadline60">
+<section id="slide-orgheadline57">
+<h2 id="orgheadline57">Neural Networks</h2>
+<div class="outline-text-2" id="text-orgheadline57">
 </div></section>
+<section id="slide-orgheadline46">
+<h3 id="orgheadline46">Mimics the brain</h3>
+</section>
 <section id="slide-orgheadline47">
-<h3 id="orgheadline47">Mimics the brain</h3>
+<h3 id="orgheadline47">Use lots of data as training to learn</h3>
 </section>
 <section id="slide-orgheadline48">
-<h3 id="orgheadline48">Use lots of data as training to learn</h3>
+<h3 id="orgheadline48">Input layer, hidden layers, output layer</h3>
 </section>
 <section id="slide-orgheadline49">
-<h3 id="orgheadline49">Input layer, hidden layers, output layer</h3>
-</section>
-<section id="slide-orgheadline50">
-<h3 id="orgheadline50"></h3>
+<h3 id="orgheadline49"></h3>
 
-<div id="orgparagraph10" class="figure">
+<div id="orgparagraph11" class="figure">
 <p><img src="./img/neural_network.jpg" alt="neural_network.jpg" />
 </p>
 </div>
 </section>
-<section id="slide-orgheadline51">
-<h3 id="orgheadline51">Hidden layers can be very complex, depending on your needs</h3>
+<section id="slide-orgheadline50">
+<h3 id="orgheadline50">Hidden layers can be very complex, depending on your needs</h3>
 </section>
-<section id="slide-orgheadline52">
-<h3 id="orgheadline52"></h3>
+<section id="slide-orgheadline51">
+<h3 id="orgheadline51"></h3>
 
-<div id="orgparagraph11" class="figure">
+<div id="orgparagraph12" class="figure">
 <p><img src="./img/nn_ex1.jpg" alt="nn_ex1.jpg" class="fragment (appear)" />
 </p>
 </div>
@@ -532,10 +528,10 @@ You would need to extract two parts of two trees and interchange them.
 
 </ul>
 </section>
-<section id="slide-orgheadline53">
-<h3 id="orgheadline53"></h3>
+<section id="slide-orgheadline52">
+<h3 id="orgheadline52"></h3>
 
-<div id="orgparagraph12" class="figure">
+<div id="orgparagraph13" class="figure">
 <p><img src="./img/nn_ex2.jpg" alt="nn_ex2.jpg" class="fragment (appear)" />
 </p>
 </div>
@@ -544,10 +540,10 @@ You would need to extract two parts of two trees and interchange them.
 
 </ul>
 </section>
-<section id="slide-orgheadline54">
-<h3 id="orgheadline54"></h3>
+<section id="slide-orgheadline53">
+<h3 id="orgheadline53"></h3>
 
-<div id="orgparagraph13" class="figure">
+<div id="orgparagraph14" class="figure">
 <p><img src="./img/nn_ex3.jpg" alt="nn_ex3.jpg" class="fragment (appear)" />
 </p>
 </div>
@@ -556,168 +552,138 @@ You would need to extract two parts of two trees and interchange them.
 
 </ul>
 </section>
-<section id="slide-orgheadline55">
-<h3 id="orgheadline55"></h3>
+<section id="slide-orgheadline54">
+<h3 id="orgheadline54"></h3>
 
-<div id="orgparagraph14" class="figure">
+<div id="orgparagraph15" class="figure">
 <p><img src="./img/neural_network_image.jpg" alt="neural_network_image.jpg" />
 </p>
 </div>
 </section>
-<section id="slide-orgheadline56">
-<h3 id="orgheadline56"></h3>
+<section id="slide-orgheadline55">
+<h3 id="orgheadline55"></h3>
 
-<div id="orgparagraph15" class="figure">
+<div id="orgparagraph16" class="figure">
 <p><img src="./img/neural_network_code.jpg" alt="neural_network_code.jpg" />
 </p>
 </div>
 </section>
-<section id="slide-orgheadline58">
-<h3 id="orgheadline58">Intuition</h3>
-<div class="outline-text-3" id="text-orgheadline58">
-</div></section>
-<section id="slide-orgheadline57">
-<h4 id="orgheadline57">Train the NN with inputs and outputs (truth tables) along with their corresponding expressions</h4>
-</section>
-<section id="slide-orgheadline59">
-<h3 id="orgheadline59">Not Done :(</h3>
+<section id="slide-orgheadline56">
+<h3 id="orgheadline56">Not Accomplished :(</h3>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline65">
-<h2 id="orgheadline65">“When in doubt, use brute force”</h2>
+<section id="slide-orgheadline62">
+<h2 id="orgheadline62">“When in doubt, use brute force”</h2>
 <p>
 Ken Thompson
 </p>
 </section>
-<section id="slide-orgheadline61">
-<h3 id="orgheadline61">Is it any better than random?</h3>
+<section id="slide-orgheadline58">
+<h3 id="orgheadline58">Is it any better than random?</h3>
 <ul>
 <li class="fragment appear">We should find out</li>
 <li class="fragment appear">Let's generate random trees until we reach our goal.</li>
 
 </ul>
 </section>
-<section id="slide-orgheadline62">
-<h3 id="orgheadline62"></h3>
+<section id="slide-orgheadline59">
+<h3 id="orgheadline59"></h3>
 
-<div id="orgparagraph16" class="figure">
+<div id="orgparagraph17" class="figure">
 <p><img src="./img/madness.jpg" alt="madness.jpg" />
 </p>
 </div>
 </section>
-<section id="slide-orgheadline63">
-<h3 id="orgheadline63">Genetic programming results:</h3>
+<section id="slide-orgheadline60">
+<h3 id="orgheadline60">Genetic programming results:</h3>
 <ul>
 <li class="fragment appear">Population size 100: average: 3.51 secs</li>
 <li class="fragment appear">Population size 10: average: 4.63 secs</li>
 
 </ul>
 </section>
-<section id="slide-orgheadline64">
-<h3 id="orgheadline64">Random trees:</h3>
+<section id="slide-orgheadline61">
+<h3 id="orgheadline61">Random trees:</h3>
 <p class="fragment (appear)">
 Average 100 executions: 3.40 secs
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline89">
-<h2 id="orgheadline89">Answer</h2>
-<div class="outline-text-2" id="text-orgheadline89">
+<section id="slide-orgheadline76">
+<h2 id="orgheadline76">Answer</h2>
+<div class="outline-text-2" id="text-orgheadline76">
 </div></section>
-<section id="slide-orgheadline66" data-background="#000000">
-<h3 id="orgheadline66"></h3>
+<section id="slide-orgheadline63" data-background="#000000">
+<h3 id="orgheadline63"></h3>
 
-<div id="orgparagraph17" class="figure">
+<div id="orgparagraph18" class="figure">
 <p><img src="./img/no.png" alt="no.png" />
 </p>
 </div>
 </section>
-<section id="slide-orgheadline67">
-<h3 id="orgheadline67">Not yet at least</h3>
+<section id="slide-orgheadline64">
+<h3 id="orgheadline64">Not yet at least</h3>
 </section>
-<section id="slide-orgheadline68">
-<h3 id="orgheadline68">Perfect is the enemy of good</h3>
-<p class="fragment (appear)">
-Voltaire
-</p>
-</section>
-<section id="slide-orgheadline69">
-<h3 id="orgheadline69">“In the discrete world of computing, there is no meaningful metric in which "small" changes and "small" effects go hand in hand, and there never will be.”</h3>
+<section id="slide-orgheadline65">
+<h3 id="orgheadline65">“In the discrete world of computing, there is no meaningful metric in which "small" changes and "small" effects go hand in hand, and there never will be.”</h3>
 <p>
 Edgar Dijkstra
 </p>
 </section>
+<section id="slide-orgheadline66">
+<h3 id="orgheadline66">“Perfect is the enemy of good”</h3>
+<p class="fragment (appear)">
+Voltaire
+</p>
+</section>
+<section id="slide-orgheadline67">
+<h3 id="orgheadline67"></h3>
+
+<div id="orgparagraph19" class="figure">
+<p><img src="./img/localmax.png" alt="localmax.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgheadline68">
+<h3 id="orgheadline68">Computers not yet capable to “reason”</h3>
+</section>
+<section id="slide-orgheadline69">
+<h3 id="orgheadline69">Programming requires “Divide and Conquer”</h3>
+</section>
 <section id="slide-orgheadline70">
-<h3 id="orgheadline70">Computers not yet capable to "reason"</h3>
-</section>
-<section id="slide-orgheadline71">
-<h3 id="orgheadline71">Programming requires "Divide and Conquer"</h3>
-</section>
-<section id="slide-orgheadline72">
-<h3 id="orgheadline72">That's just for boolean logic</h3>
+<h3 id="orgheadline70">That was just boolean logic</h3>
 <p>
 What about detecting infinite loops in huge programs?
 </p>
 </section>
+<section id="slide-orgheadline71">
+<h3 id="orgheadline71">How do we demonstrate the absence of bugs?</h3>
+</section>
+<section id="slide-orgheadline74">
+<h3 id="orgheadline74">What is being done?</h3>
+<div class="outline-text-3" id="text-orgheadline74">
+</div></section>
 <section id="slide-orgheadline73">
-<h3 id="orgheadline73">How do we demonstrate the absence of bugs?</h3>
+<h4 id="orgheadline73">Python interpreter in ML (Predicts the output of the program)</h4>
+<div class="outline-text-4" id="text-orgheadline73">
+</div><ul class="org-ul"><li><a id="orgheadline72"></a><a href="https://github.com/wojciechz/learning_to_execute">https://github.com/wojciechz/learning_to_execute</a><br  /></li></ul>
 </section>
-<section id="slide-orgheadline76">
-<h3 id="orgheadline76">What is being done?</h3>
-<div class="outline-text-3" id="text-orgheadline76">
-</div></section>
 <section id="slide-orgheadline75">
-<h4 id="orgheadline75">Python interpreter in ML (Predicts the output of the program)</h4>
-<div class="outline-text-4" id="text-orgheadline75">
-</div><ul class="org-ul"><li><a id="orgheadline74"></a><a href="https://github.com/wojciechz/learning_to_execute">https://github.com/wojciechz/learning_to_execute</a><br  /></li></ul>
+<h3 id="orgheadline75">Bibliography</h3>
+<ul>
+<li><a href="https://docs.python.org/2/library/ast.html">Official AST documentation</a></li>
+<li><a href="http://greentreesnakes.readthedocs.io/en/latest/">Green Tree Snakes - the missing Python AST docs</a></li>
 
-</section>
-<section id="slide-orgheadline77">
-<h3 id="orgheadline77"></h3>
-</section>
-<section id="slide-orgheadline78">
-<h3 id="orgheadline78"></h3>
-</section>
-<section id="slide-orgheadline82">
-<h3 id="orgheadline82">Program outputs are not linear</h3>
-<div class="outline-text-3" id="text-orgheadline82">
-</div></section>
-<section id="slide-orgheadline80">
-<h4 id="orgheadline80">Divide and conquer</h4>
-<div class="outline-text-4" id="text-orgheadline80">
-</div><ul class="org-ul"><li><a id="orgheadline79"></a>Functions call other functions<br  /></li></ul>
-</section>
-<section id="slide-orgheadline81">
-<h4 id="orgheadline81">Programs can be very big and complex</h4>
-</section>
-<section id="slide-orgheadline84">
-<h3 id="orgheadline84">Can Genetic Programming be the answer?</h3>
-<div class="outline-text-3" id="text-orgheadline84">
-</div></section>
-<section id="slide-orgheadline83">
-<h4 id="orgheadline83">It tooks lots of time to find the appropiate small function, so not suitable for big programs.</h4>
-</section>
-<section id="slide-orgheadline88">
-<h3 id="orgheadline88">Can Neural Networks be the answer?</h3>
-<div class="outline-text-3" id="text-orgheadline88">
-</div></section>
-<section id="slide-orgheadline85">
-<h4 id="orgheadline85">They can learn to solve specific problems</h4>
-</section>
-<section id="slide-orgheadline86">
-<h4 id="orgheadline86">But programming is not an specific problem</h4>
-</section>
-<section id="slide-orgheadline87">
-<h4 id="orgheadline87">In some years, it can evolve enough to be able to reason.</h4>
+</ul>
 </section>
 </section>
 </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
@@ -744,11 +710,11 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
- { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
 });
 </script>
 </body>

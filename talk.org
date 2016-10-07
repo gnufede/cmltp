@@ -1,10 +1,10 @@
-#+title: ¿Puede la máquina aprender a programar?
+#+title: Can machines learn to program?
 #+AUTHOR: Federico Mon
 #+EMAIL: gnu.fede@gmail.com
 #+DATE: 2016-10-08
 #+OPTIONS: num:nil toc:nil todo:nil
-# #+REVEAL_ROOT: ./reveal.js/
-#+REVEAL_ROOT: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/
+#+REVEAL_ROOT: ./reveal.js/
+# #+REVEAL_ROOT: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/
 #+REVEAL_EXTRA_CSS: ./custom.css
 #+REVEAL_SLIDE_NUMBER: nil
 #+REVEAL_THEME: white
@@ -19,13 +19,13 @@
    [[./img/logo-ticketea-white.svg]]
 
 
-* First of all...
+* TODO First of all...
 ** What will you do once you automate all your work?
 [[https://www.reddit.com/r/cscareerquestions/comments/4km3yc/finally_fired_after_6_years/][Finally fired after 6 years]]
 #+NAME:   fig:Fired_after_6_years
 [[./img/Automate.png]]
 
-* What is “To program”?
+* TODO What is “To program”?
 *** Source code
 #+BEGIN_SRC python
 def x(a, b, c):
@@ -64,7 +64,7 @@ def test_sort(self):
     self.assertEqual(my_list, list((0, 2, 3, 4)))
 #+END_SRC
 
-** 
+** TODO 
 #+BEGIN_SRC python
 def test_sort(self):
     my_list = list((3, 4, 2, 0))
@@ -72,7 +72,7 @@ def test_sort(self):
     self.assertEqual(my_list, list((0, 2, 3, 4)))
 #+END_SRC
 
-** 
+** TODO 
 #+BEGIN_SRC python
 class myList(list):
     def sort(self):
@@ -91,7 +91,7 @@ def test_sort(self):
 ** Program testing can be used to show the presence of bugs, but never to show their absence!
 Edgar Dijkstra
 
-* Lots of fuzz with Deep Learning lately
+* TODO Lots of fuzz with Deep Learning lately
 ** Alphago
 #+NAME:   fig:Alphagologo
 [[./img/Alphago_logo_Reversed.svg]]
@@ -131,7 +131,11 @@ A B Sel | Out
 ** AST
 #+NAME:   fig:AST_multi
 [[./img/multiplexer_ast.png]]
-
+** 
+#+NAME:   fig:prefix_notation
+[[./img/prefix_notation.png]]
+** Prefix notation
+  OR AND A NOT S AND B S
 * AST
 ** 
 #+BEGIN_SRC python
@@ -163,7 +167,7 @@ from ast import (
     NodeTransformer, NodeVisitor, copy_location, Subscript, Index, Str, dump
 )
 #+END_SRC
-** 
+** TODO 
 #+BEGIN_SRC python
 def create_variable(variable_name):
     assert variable_name in variable_names
@@ -193,9 +197,6 @@ def get_len(tree):
     v.visit(tree)
     return v.length
 #+END_SRC
-** Bibliography
- * [[https://docs.python.org/2/library/ast.html][Official AST documentation]]
- * [[http://greentreesnakes.readthedocs.io/en/latest/][Green Tree Snakes - the missing Python AST docs]]
 * Genetic Programming
 ** Individuals
  #+ATTR_REVEAL: :frag (appear)
@@ -230,11 +231,6 @@ You would need to extract two parts of two trees and interchange them.
 *** 
 #+NAME:   fig:Genetic Programming Mutation
 [[./img/genetic_mutate.png]]
-*** 
-#+BEGIN_SRC python
-(a and not s) or (b or s)  # (5)
-(a and not s) or (b and s) # (8)
-#+END_SRC
 *** Transformer
 *** 
 #+BEGIN_SRC python
@@ -327,15 +323,20 @@ Ken Thompson
 ** Not yet at least
 ** “In the discrete world of computing, there is no meaningful metric in which "small" changes and "small" effects go hand in hand, and there never will be.”
 Edgar Dijkstra
-** Perfect is the enemy of good
+** “Perfect is the enemy of good”
     #+ATTR_REVEAL: :frag (appear)
     Voltaire
-** Computers not yet capable to "reason"
-** Programming requires "Divide and Conquer"
-** That's just for boolean logic
+** 
+#+NAME:   fig:local maximum
+[[./img/localmax.png]]
+** Computers not yet capable to “reason”
+** Programming requires “Divide and Conquer”
+** That was just boolean logic
 What about detecting infinite loops in huge programs?
 ** How do we demonstrate the absence of bugs?
 ** What is being done?
 *** Python interpreter in ML (Predicts the output of the program)
 **** https://github.com/wojciechz/learning_to_execute
-
+** Bibliography
+ * [[https://docs.python.org/2/library/ast.html][Official AST documentation]]
+ * [[http://greentreesnakes.readthedocs.io/en/latest/][Green Tree Snakes - the missing Python AST docs]]
