@@ -27,7 +27,7 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Can machines learn to program?</h1><h2 class="author">Federico Mon</h2><h2 class="date">2016-10-08</h2><p class="date">Created: 2016-10-07 Fri 08:56</p>
+<section id="sec-title-slide"><h1 class="title">Can machines learn to program?</h1><h2 class="author">Federico Mon</h2><h2 class="date">2016-10-08</h2><p class="date">Created: 2016-10-07 Fri 09:15</p>
 </section>
 
 <section>
@@ -44,64 +44,12 @@ Sorry, your browser does not support SVG.</object>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline3">
-<h2 id="orgheadline3">First of all&#x2026;</h2>
-<div class="outline-text-2" id="text-orgheadline3">
+<section id="slide-orgheadline5">
+<h2 id="orgheadline5">TDD</h2>
+<div class="outline-text-2" id="text-orgheadline5">
 </div></section>
 <section id="slide-orgheadline2">
-<h3 id="orgheadline2">What will you do once you automate all your work?</h3>
-<p>
-<a href="https://www.reddit.com/r/cscareerquestions/comments/4km3yc/finally_fired_after_6_years/">Finally fired after 6 years</a>
-</p>
-
-<div id="orgparagraph2" class="figure">
-<p><img src="./img/Automate.png" alt="Automate.png" />
-</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-orgheadline7">
-<h2 id="orgheadline7">What is “To program”?</h2>
-<div class="outline-text-2" id="text-orgheadline7">
-</div></section>
-<section id="slide-orgheadline4">
-<h4 id="orgheadline4">Source code</h4>
-<div class="org-src-container">
-
-<pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">x</span><span style="color: #3a81c3;">(</span>a, b, c<span style="color: #3a81c3;">)</span>:
-    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3;">(</span>a + b<span style="color: #3a81c3;">)</span> * c
-</pre>
-</div>
-</section>
-<section id="slide-orgheadline5">
-<h4 id="orgheadline5">Bytecode</h4>
-<div class="org-src-container">
-
-<pre  class="src src-python">&gt;&gt;&gt; <span style="color: #715ab1;">x</span> = <span style="color: #3a81c3; font-weight: bold;">lambda</span> a,b,c: <span style="color: #3a81c3;">(</span>a + b<span style="color: #3a81c3;">)</span> * c
-&gt;&gt;&gt; x.__code__.co_code                                                                                                                             
-b<span style="color: #2d9574;">'|\x00\x00|\x01\x00\x17|\x02\x00\x14S'</span>
-</pre>
-</div>
-</section>
-<section id="slide-orgheadline6">
-<h4 id="orgheadline6">AST</h4>
-
-<div id="orgparagraph3" class="figure">
-<p><img src="./img/binop.png" alt="binop.png" />
-</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-orgheadline13">
-<h2 id="orgheadline13">TDD</h2>
-<div class="outline-text-2" id="text-orgheadline13">
-</div></section>
-<section id="slide-orgheadline8">
-<h3 id="orgheadline8"></h3>
+<h3 id="orgheadline2"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">test_sort</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
@@ -112,8 +60,8 @@ b<span style="color: #2d9574;">'|\x00\x00|\x01\x00\x17|\x02\x00\x14S'</span>
 </div>
 
 </section>
-<section id="slide-orgheadline9">
-<h3 id="orgheadline9"></h3>
+<section id="slide-orgheadline3">
+<h3 id="orgheadline3"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">myList</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">list</span><span style="color: #3a81c3;">)</span>:
@@ -129,40 +77,8 @@ __builtins__.<span style="color: #3a81c3;">list</span> = myList
 </div>
 
 </section>
-<section id="slide-orgheadline10">
-<h3 id="orgheadline10"></h3>
-<div class="org-src-container">
-
-<pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">test_sort</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
-    <span style="color: #715ab1;">my_list</span> = <span style="color: #3a81c3;">list</span><span style="color: #3a81c3;">(</span><span style="color: #6c3163;">(</span><span style="color: #4e3163;">3</span>, <span style="color: #4e3163;">4</span>, <span style="color: #4e3163;">2</span>, <span style="color: #4e3163;">0</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
-    my_list.sort<span style="color: #3a81c3;">()</span>
-    <span style="color: #3a81c3; font-weight: bold;">self</span>.assertEqual<span style="color: #3a81c3;">(</span>my_list, <span style="color: #3a81c3;">list</span><span style="color: #6c3163;">(</span><span style="color: #2d9574;">(</span><span style="color: #4e3163;">0</span>, <span style="color: #4e3163;">2</span>, <span style="color: #4e3163;">3</span>, <span style="color: #4e3163;">4</span><span style="color: #2d9574;">)</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline11">
-<h3 id="orgheadline11"></h3>
-<div class="org-src-container">
-
-<pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">myList</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">list</span><span style="color: #3a81c3;">)</span>:
-    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">sort</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
-        <span style="color: #715ab1;">x</span> = <span style="color: #3a81c3;">list</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #6c3163;">[</span>-<span style="color: #4e3163;">1</span><span style="color: #6c3163;">]</span>, <span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #6c3163;">[</span>-<span style="color: #4e3163;">2</span><span style="color: #6c3163;">]</span>, <span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #6c3163;">[</span><span style="color: #4e3163;">0</span><span style="color: #6c3163;">]</span>, <span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #6c3163;">[</span><span style="color: #4e3163;">1</span><span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>
-        <span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">[</span><span style="color: #4e3163;">0</span><span style="color: #3a81c3;">]</span> = x<span style="color: #3a81c3;">[</span><span style="color: #4e3163;">0</span><span style="color: #3a81c3;">]</span>
-        <span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">[</span><span style="color: #4e3163;">1</span><span style="color: #3a81c3;">]</span> = x<span style="color: #3a81c3;">[</span><span style="color: #4e3163;">1</span><span style="color: #3a81c3;">]</span>
-        <span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">[</span><span style="color: #4e3163;">2</span><span style="color: #3a81c3;">]</span> = x<span style="color: #3a81c3;">[</span><span style="color: #4e3163;">2</span><span style="color: #3a81c3;">]</span>
-        <span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">[</span><span style="color: #4e3163;">3</span><span style="color: #3a81c3;">]</span> = x<span style="color: #3a81c3;">[</span><span style="color: #4e3163;">3</span><span style="color: #3a81c3;">]</span>
-__builtins__.<span style="color: #3a81c3;">list</span> = myList
-
-<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">test_sort</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
-    <span style="color: #715ab1;">my_list</span> = <span style="color: #3a81c3;">list</span><span style="color: #3a81c3;">(</span><span style="color: #6c3163;">(</span><span style="color: #4e3163;">3</span>, <span style="color: #4e3163;">4</span>, <span style="color: #4e3163;">2</span>, <span style="color: #4e3163;">0</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
-    my_list.sort<span style="color: #3a81c3;">()</span>
-    <span style="color: #3a81c3; font-weight: bold;">self</span>.assertEqual<span style="color: #3a81c3;">(</span>my_list, <span style="color: #3a81c3;">list</span><span style="color: #6c3163;">(</span><span style="color: #2d9574;">(</span><span style="color: #4e3163;">0</span>, <span style="color: #4e3163;">2</span>, <span style="color: #4e3163;">3</span>, <span style="color: #4e3163;">4</span><span style="color: #2d9574;">)</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
-</pre>
-</div>
-</section>
-<section id="slide-orgheadline12">
-<h3 id="orgheadline12">Program testing can be used to show the presence of bugs, but never to show their absence!</h3>
+<section id="slide-orgheadline4">
+<h3 id="orgheadline4">Program testing can be used to show the presence of bugs, but never to show their absence!</h3>
 <p>
 Edgar Dijkstra
 </p>
@@ -170,60 +86,26 @@ Edgar Dijkstra
 </section>
 </section>
 <section>
-<section id="slide-orgheadline16">
-<h2 id="orgheadline16">Lots of fuzz with Deep Learning lately</h2>
-<div class="outline-text-2" id="text-orgheadline16">
-</div></section>
-<section id="slide-orgheadline14">
-<h3 id="orgheadline14">Alphago</h3>
-
-<div id="orgparagraph4" class="figure">
-<p><object type="image/svg+xml" data="./img/Alphago_logo_Reversed.svg" >
-Sorry, your browser does not support SVG.</object>
-</p>
-</div>
-
-</section>
-<section id="slide-orgheadline15">
-<h3 id="orgheadline15">Wired Cover Jun 2016</h3>
-
-<div id="orgparagraph5" class="figure">
-<p><img src="./img/wired_cover.png" alt="wired_cover.png" />
-</p>
-</div>
-<aside class="notes">
-<ul>
-<li>Portada de Wired de Junio de este año (2016)</li>
-<li>Por lo que vemos en la portada, Wired debe haber conseguido generar portadas
-por ordenador antes o después de haber echado a su diseñador. no?</li>
-
-</ul>
-
-</aside>
-
+<section id="slide-orgheadline6">
+<h2 id="orgheadline6">Can machines do TDD?</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline17">
-<h2 id="orgheadline17">Can machines do TDD?</h2>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline24">
-<h2 id="orgheadline24">A very small example</h2>
-<div class="outline-text-2" id="text-orgheadline24">
+<section id="slide-orgheadline13">
+<h2 id="orgheadline13">A very small example</h2>
+<div class="outline-text-2" id="text-orgheadline13">
 </div></section>
-<section id="slide-orgheadline18">
-<h3 id="orgheadline18">Basic Multiplexor</h3>
+<section id="slide-orgheadline7">
+<h3 id="orgheadline7">Basic Multiplexor</h3>
 
-<div id="orgparagraph6" class="figure">
+<div id="orgparagraph2" class="figure">
 <p><img src="./img/Multiplexer.png" alt="Multiplexer.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgheadline19">
-<h3 id="orgheadline19"></h3>
+<section id="slide-orgheadline8">
+<h3 id="orgheadline8"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-bash">A B Sel | Out
@@ -239,44 +121,44 @@ por ordenador antes o después de haber echado a su diseñador. no?</li>
 </pre>
 </div>
 </section>
-<section id="slide-orgheadline20">
-<h3 id="orgheadline20"></h3>
+<section id="slide-orgheadline9">
+<h3 id="orgheadline9"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #3a81c3;">(</span>a <span style="color: #3a81c3; font-weight: bold;">and</span> <span style="color: #3a81c3; font-weight: bold;">not</span> s<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">or</span> <span style="color: #3a81c3;">(</span>b <span style="color: #3a81c3; font-weight: bold;">and</span> s<span style="color: #3a81c3;">)</span>
 </pre>
 </div>
 </section>
-<section id="slide-orgheadline21">
-<h3 id="orgheadline21">AST</h3>
+<section id="slide-orgheadline10">
+<h3 id="orgheadline10">AST</h3>
 
-<div id="orgparagraph7" class="figure">
+<div id="orgparagraph3" class="figure">
 <p><img src="./img/multiplexer_ast.png" alt="multiplexer_ast.png" />
 </p>
 </div>
 </section>
-<section id="slide-orgheadline22">
-<h3 id="orgheadline22"></h3>
+<section id="slide-orgheadline11">
+<h3 id="orgheadline11"></h3>
 
-<div id="orgparagraph8" class="figure">
+<div id="orgparagraph4" class="figure">
 <p><img src="./img/prefix_notation.png" alt="prefix_notation.png" />
 </p>
 </div>
 </section>
-<section id="slide-orgheadline23">
-<h3 id="orgheadline23">Prefix notation</h3>
+<section id="slide-orgheadline12">
+<h3 id="orgheadline12">Prefix notation</h3>
 <p>
 OR AND A NOT S AND B S
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline32">
-<h2 id="orgheadline32">AST</h2>
-<div class="outline-text-2" id="text-orgheadline32">
+<section id="slide-orgheadline20">
+<h2 id="orgheadline20">AST</h2>
+<div class="outline-text-2" id="text-orgheadline20">
 </div></section>
-<section id="slide-orgheadline25">
-<h3 id="orgheadline25"></h3>
+<section id="slide-orgheadline14">
+<h3 id="orgheadline14"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-python">&gt;&gt;&gt; <span style="color: #3a81c3; font-weight: bold;">import</span> ast
@@ -296,8 +178,8 @@ OR AND A NOT S AND B S
 </pre>
 </div>
 </section>
-<section id="slide-orgheadline26">
-<h3 id="orgheadline26"></h3>
+<section id="slide-orgheadline15">
+<h3 id="orgheadline15"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-python">&gt;&gt;&gt; <span style="color: #3a81c3; font-weight: bold;">import</span> meta
@@ -310,8 +192,8 @@ OR AND A NOT S AND B S
 </pre>
 </div>
 </section>
-<section id="slide-orgheadline27">
-<h3 id="orgheadline27"></h3>
+<section id="slide-orgheadline16">
+<h3 id="orgheadline16"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">from</span> ast <span style="color: #3a81c3; font-weight: bold;">import</span> <span style="color: #3a81c3;">(</span>
@@ -321,29 +203,12 @@ OR AND A NOT S AND B S
 </pre>
 </div>
 </section>
-<section id="slide-orgheadline28">
-<h3 id="orgheadline28"></h3>
-<div class="org-src-container">
-
-<pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">create_variable</span><span style="color: #3a81c3;">(</span>variable_name<span style="color: #3a81c3;">)</span>:
-    <span style="color: #3a81c3; font-weight: bold;">assert</span> variable_name <span style="color: #3a81c3; font-weight: bold;">in</span> variable_names
-    <span style="color: #3a81c3; font-weight: bold;">return</span> Name<span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">id</span>=variable_name, ctx=Load<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>
-
-<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">create_not</span><span style="color: #3a81c3;">(</span>tree<span style="color: #3a81c3;">)</span>:
-    <span style="color: #3a81c3; font-weight: bold;">return</span> UnaryOp<span style="color: #3a81c3;">(</span>op=Not<span style="color: #6c3163;">()</span>, operand=tree<span style="color: #3a81c3;">)</span>
-
-<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">create_or</span><span style="color: #3a81c3;">(</span>args<span style="color: #3a81c3;">)</span>:
-    <span style="color: #3a81c3; font-weight: bold;">assert</span> <span style="color: #3a81c3;">len</span><span style="color: #3a81c3;">(</span>args<span style="color: #3a81c3;">)</span> &gt; <span style="color: #4e3163;">1</span>
-    <span style="color: #3a81c3; font-weight: bold;">return</span> BoolOp<span style="color: #3a81c3;">(</span>Or<span style="color: #6c3163;">()</span>, args<span style="color: #3a81c3;">)</span>
-</pre>
-</div>
-</section>
-<section id="slide-orgheadline31">
-<h3 id="orgheadline31">Visitor and Transformer</h3>
-<div class="outline-text-3" id="text-orgheadline31">
+<section id="slide-orgheadline19">
+<h3 id="orgheadline19">Visitor and Transformer</h3>
+<div class="outline-text-3" id="text-orgheadline19">
 </div></section>
-<section id="slide-orgheadline29">
-<h4 id="orgheadline29"></h4>
+<section id="slide-orgheadline17">
+<h4 id="orgheadline17"></h4>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Visitor</span><span style="color: #3a81c3;">(</span>NodeVisitor<span style="color: #3a81c3;">)</span>:
@@ -355,8 +220,8 @@ OR AND A NOT S AND B S
 </pre>
 </div>
 </section>
-<section id="slide-orgheadline30">
-<h4 id="orgheadline30"></h4>
+<section id="slide-orgheadline18">
+<h4 id="orgheadline18"></h4>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">get_len</span><span style="color: #3a81c3;">(</span>tree<span style="color: #3a81c3;">)</span>:
@@ -368,12 +233,12 @@ OR AND A NOT S AND B S
 </section>
 </section>
 <section>
-<section id="slide-orgheadline45">
-<h2 id="orgheadline45">Genetic Programming</h2>
-<div class="outline-text-2" id="text-orgheadline45">
+<section id="slide-orgheadline31">
+<h2 id="orgheadline31">Genetic Programming</h2>
+<div class="outline-text-2" id="text-orgheadline31">
 </div></section>
-<section id="slide-orgheadline33">
-<h3 id="orgheadline33">Individuals</h3>
+<section id="slide-orgheadline21">
+<h3 id="orgheadline21">Individuals</h3>
 <ul>
 <li class="fragment appear">Each one has its own DNA</li>
 <li class="fragment appear">In nature: "&#x2026;GATTACA&#x2026;"</li>
@@ -390,8 +255,8 @@ OR AND A NOT S AND B S
 
 </aside>
 </section>
-<section id="slide-orgheadline34">
-<h3 id="orgheadline34">As Genetic Algorithms</h3>
+<section id="slide-orgheadline22">
+<h3 id="orgheadline22">As Genetic Algorithms</h3>
 <ul>
 <li class="fragment appear">Start with a population</li>
 <li class="fragment appear">Evaluate them</li>
@@ -402,8 +267,8 @@ OR AND A NOT S AND B S
 
 </ul>
 </section>
-<section id="slide-orgheadline35">
-<h3 id="orgheadline35">Evaluation</h3>
+<section id="slide-orgheadline23">
+<h3 id="orgheadline23">Evaluation</h3>
 <ul>
 <li class="fragment appear">In our case, how many unit tests the program passes</li>
 <li class="fragment appear">For our multiplexor, there are only 8 unit tests</li>
@@ -411,38 +276,38 @@ OR AND A NOT S AND B S
 </ul>
 
 </section>
-<section id="slide-orgheadline36">
-<h3 id="orgheadline36">Mix them</h3>
+<section id="slide-orgheadline24">
+<h3 id="orgheadline24">Mix them</h3>
 <p>
 You would need to extract two parts of two trees and interchange them.
 </p>
 </section>
-<section id="slide-orgheadline37">
-<h3 id="orgheadline37"></h3>
+<section id="slide-orgheadline25">
+<h3 id="orgheadline25"></h3>
 
-<div id="orgparagraph9" class="figure">
+<div id="orgparagraph5" class="figure">
 <p><img src="./img/genetic_mix.png" alt="genetic_mix.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgheadline42">
-<h3 id="orgheadline42">Mutate them</h3>
-<div class="outline-text-3" id="text-orgheadline42">
+<section id="slide-orgheadline30">
+<h3 id="orgheadline30">Mutate them</h3>
+<div class="outline-text-3" id="text-orgheadline30">
 </div></section>
-<section id="slide-orgheadline38">
-<h4 id="orgheadline38"></h4>
+<section id="slide-orgheadline26">
+<h4 id="orgheadline26"></h4>
 
-<div id="orgparagraph10" class="figure">
+<div id="orgparagraph6" class="figure">
 <p><img src="./img/genetic_mutate.png" alt="genetic_mutate.png" />
 </p>
 </div>
 </section>
-<section id="slide-orgheadline39">
-<h4 id="orgheadline39">Transformer</h4>
+<section id="slide-orgheadline27">
+<h4 id="orgheadline27">Transformer</h4>
 </section>
-<section id="slide-orgheadline40">
-<h4 id="orgheadline40"></h4>
+<section id="slide-orgheadline28">
+<h4 id="orgheadline28"></h4>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Mutator</span><span style="color: #3a81c3;">(</span>NodeTransformer<span style="color: #3a81c3;">)</span>:
@@ -469,8 +334,8 @@ You would need to extract two parts of two trees and interchange them.
 </pre>
 </div>
 </section>
-<section id="slide-orgheadline41">
-<h4 id="orgheadline41"></h4>
+<section id="slide-orgheadline29">
+<h4 id="orgheadline29"></h4>
 <div class="org-src-container">
 
 <pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">mutate</span><span style="color: #3a81c3;">(</span>tree<span style="color: #3a81c3;">)</span>:
@@ -479,71 +344,36 @@ You would need to extract two parts of two trees and interchange them.
 </div>
 
 </section>
-<section id="slide-orgheadline44">
-<h3 id="orgheadline44">Good news</h3>
-<div class="outline-text-3" id="text-orgheadline44">
-</div></section>
-<section id="slide-orgheadline43">
-<h4 id="orgheadline43">DEAP</h4>
-<p>
-<a href="https://github.com/DEAP/deap">https://github.com/DEAP/deap</a>
-</p>
-
-</section>
 </section>
 <section>
-<section id="slide-orgheadline57">
-<h2 id="orgheadline57">Neural Networks</h2>
-<div class="outline-text-2" id="text-orgheadline57">
+<section id="slide-orgheadline41">
+<h2 id="orgheadline41">Neural Networks</h2>
+<div class="outline-text-2" id="text-orgheadline41">
 </div></section>
-<section id="slide-orgheadline46">
-<h3 id="orgheadline46">Mimics the brain</h3>
+<section id="slide-orgheadline32">
+<h3 id="orgheadline32">Mimics the brain</h3>
 </section>
-<section id="slide-orgheadline47">
-<h3 id="orgheadline47">Use lots of data as training to learn</h3>
+<section id="slide-orgheadline33">
+<h3 id="orgheadline33">Use lots of data as training to learn</h3>
 </section>
-<section id="slide-orgheadline48">
-<h3 id="orgheadline48">Input layer, hidden layers, output layer</h3>
+<section id="slide-orgheadline34">
+<h3 id="orgheadline34">Input layer, hidden layers, output layer</h3>
 </section>
-<section id="slide-orgheadline49">
-<h3 id="orgheadline49"></h3>
+<section id="slide-orgheadline35">
+<h3 id="orgheadline35"></h3>
 
-<div id="orgparagraph11" class="figure">
+<div id="orgparagraph7" class="figure">
 <p><img src="./img/neural_network.jpg" alt="neural_network.jpg" />
 </p>
 </div>
 </section>
-<section id="slide-orgheadline50">
-<h3 id="orgheadline50">Hidden layers can be very complex, depending on your needs</h3>
+<section id="slide-orgheadline36">
+<h3 id="orgheadline36">Hidden layers can be very complex, depending on your needs</h3>
 </section>
-<section id="slide-orgheadline51">
-<h3 id="orgheadline51"></h3>
+<section id="slide-orgheadline37">
+<h3 id="orgheadline37"></h3>
 
-<div id="orgparagraph12" class="figure">
-<p><img src="./img/nn_ex1.jpg" alt="nn_ex1.jpg" class="fragment (appear)" />
-</p>
-</div>
-<ul>
-<li>a man is talking on a cell phone near a building.</li>
-
-</ul>
-</section>
-<section id="slide-orgheadline52">
-<h3 id="orgheadline52"></h3>
-
-<div id="orgparagraph13" class="figure">
-<p><img src="./img/nn_ex2.jpg" alt="nn_ex2.jpg" class="fragment (appear)" />
-</p>
-</div>
-<ul>
-<li>a white dog is running on gravel away from two people and a black and brown dog.</li>
-
-</ul>
-</section>
-<section id="slide-orgheadline53">
-<h3 id="orgheadline53"></h3>
-
-<div id="orgparagraph14" class="figure">
+<div id="orgparagraph8" class="figure">
 <p><img src="./img/nn_ex3.jpg" alt="nn_ex3.jpg" class="fragment (appear)" />
 </p>
 </div>
@@ -552,130 +382,125 @@ You would need to extract two parts of two trees and interchange them.
 
 </ul>
 </section>
-<section id="slide-orgheadline54">
-<h3 id="orgheadline54"></h3>
+<section id="slide-orgheadline38">
+<h3 id="orgheadline38"></h3>
 
-<div id="orgparagraph15" class="figure">
+<div id="orgparagraph9" class="figure">
 <p><img src="./img/neural_network_image.jpg" alt="neural_network_image.jpg" />
 </p>
 </div>
 </section>
-<section id="slide-orgheadline55">
-<h3 id="orgheadline55"></h3>
+<section id="slide-orgheadline39">
+<h3 id="orgheadline39"></h3>
 
-<div id="orgparagraph16" class="figure">
+<div id="orgparagraph10" class="figure">
 <p><img src="./img/neural_network_code.jpg" alt="neural_network_code.jpg" />
 </p>
 </div>
 </section>
-<section id="slide-orgheadline56">
-<h3 id="orgheadline56">Not Accomplished :(</h3>
+<section id="slide-orgheadline40">
+<h3 id="orgheadline40">Not Accomplished :(</h3>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline62">
-<h2 id="orgheadline62">“When in doubt, use brute force”</h2>
+<section id="slide-orgheadline46">
+<h2 id="orgheadline46">“When in doubt, use brute force”</h2>
 <p>
 Ken Thompson
 </p>
 </section>
-<section id="slide-orgheadline58">
-<h3 id="orgheadline58">Is it any better than random?</h3>
+<section id="slide-orgheadline42">
+<h3 id="orgheadline42">Is it any better than random?</h3>
 <ul>
 <li class="fragment appear">We should find out</li>
 <li class="fragment appear">Let's generate random trees until we reach our goal.</li>
 
 </ul>
 </section>
-<section id="slide-orgheadline59">
-<h3 id="orgheadline59"></h3>
+<section id="slide-orgheadline43">
+<h3 id="orgheadline43"></h3>
 
-<div id="orgparagraph17" class="figure">
+<div id="orgparagraph11" class="figure">
 <p><img src="./img/madness.jpg" alt="madness.jpg" />
 </p>
 </div>
 </section>
-<section id="slide-orgheadline60">
-<h3 id="orgheadline60">Genetic programming results:</h3>
+<section id="slide-orgheadline44">
+<h3 id="orgheadline44">Genetic programming results:</h3>
 <ul>
 <li class="fragment appear">Population size 100: average: 3.51 secs</li>
 <li class="fragment appear">Population size 10: average: 4.63 secs</li>
 
 </ul>
 </section>
-<section id="slide-orgheadline61">
-<h3 id="orgheadline61">Random trees:</h3>
+<section id="slide-orgheadline45">
+<h3 id="orgheadline45">Random trees:</h3>
 <p class="fragment (appear)">
 Average 100 executions: 3.40 secs
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline76">
-<h2 id="orgheadline76">Answer</h2>
-<div class="outline-text-2" id="text-orgheadline76">
+<section id="slide-orgheadline59">
+<h2 id="orgheadline59">Answer</h2>
+<div class="outline-text-2" id="text-orgheadline59">
 </div></section>
-<section id="slide-orgheadline63" data-background="#000000">
-<h3 id="orgheadline63"></h3>
+<section id="slide-orgheadline47" data-background="#000000">
+<h3 id="orgheadline47"></h3>
 
-<div id="orgparagraph18" class="figure">
+<div id="orgparagraph12" class="figure">
 <p><img src="./img/no.png" alt="no.png" />
 </p>
 </div>
 </section>
-<section id="slide-orgheadline64">
-<h3 id="orgheadline64">Not yet at least</h3>
+<section id="slide-orgheadline48">
+<h3 id="orgheadline48">Not yet at least</h3>
 </section>
-<section id="slide-orgheadline65">
-<h3 id="orgheadline65">“In the discrete world of computing, there is no meaningful metric in which "small" changes and "small" effects go hand in hand, and there never will be.”</h3>
+<section id="slide-orgheadline49">
+<h3 id="orgheadline49">“In the discrete world of computing, there is no meaningful metric in which "small" changes and "small" effects go hand in hand, and there never will be.”</h3>
 <p>
 Edgar Dijkstra
 </p>
 </section>
-<section id="slide-orgheadline66">
-<h3 id="orgheadline66">“Perfect is the enemy of good”</h3>
+<section id="slide-orgheadline50">
+<h3 id="orgheadline50">“Perfect is the enemy of good”</h3>
 <p class="fragment (appear)">
 Voltaire
 </p>
 </section>
-<section id="slide-orgheadline67">
-<h3 id="orgheadline67"></h3>
+<section id="slide-orgheadline51">
+<h3 id="orgheadline51"></h3>
 
-<div id="orgparagraph19" class="figure">
+<div id="orgparagraph13" class="figure">
 <p><img src="./img/localmax.png" alt="localmax.png" />
 </p>
 </div>
 </section>
-<section id="slide-orgheadline68">
-<h3 id="orgheadline68">Computers not yet capable to “reason”</h3>
+<section id="slide-orgheadline52">
+<h3 id="orgheadline52">Computers not yet capable to “reason”</h3>
 </section>
-<section id="slide-orgheadline69">
-<h3 id="orgheadline69">Programming requires “Divide and Conquer”</h3>
+<section id="slide-orgheadline53">
+<h3 id="orgheadline53">Programming requires “Divide and Conquer”</h3>
 </section>
-<section id="slide-orgheadline70">
-<h3 id="orgheadline70">That was just boolean logic</h3>
-<p>
-What about detecting infinite loops in huge programs?
-</p>
+<section id="slide-orgheadline54">
+<h3 id="orgheadline54">How do we demonstrate the absence of bugs?</h3>
 </section>
-<section id="slide-orgheadline71">
-<h3 id="orgheadline71">How do we demonstrate the absence of bugs?</h3>
-</section>
-<section id="slide-orgheadline74">
-<h3 id="orgheadline74">What is being done?</h3>
-<div class="outline-text-3" id="text-orgheadline74">
+<section id="slide-orgheadline57">
+<h3 id="orgheadline57">What is being done?</h3>
+<div class="outline-text-3" id="text-orgheadline57">
 </div></section>
-<section id="slide-orgheadline73">
-<h4 id="orgheadline73">Python interpreter in ML (Predicts the output of the program)</h4>
-<div class="outline-text-4" id="text-orgheadline73">
-</div><ul class="org-ul"><li><a id="orgheadline72"></a><a href="https://github.com/wojciechz/learning_to_execute">https://github.com/wojciechz/learning_to_execute</a><br  /></li></ul>
+<section id="slide-orgheadline56">
+<h4 id="orgheadline56">Python interpreter in ML (Predicts the output of the program)</h4>
+<div class="outline-text-4" id="text-orgheadline56">
+</div><ul class="org-ul"><li><a id="orgheadline55"></a><a href="https://github.com/wojciechz/learning_to_execute">https://github.com/wojciechz/learning_to_execute</a><br  /></li></ul>
 </section>
-<section id="slide-orgheadline75">
-<h3 id="orgheadline75">Bibliography</h3>
+<section id="slide-orgheadline58">
+<h3 id="orgheadline58">Bibliography</h3>
 <ul>
 <li><a href="https://docs.python.org/2/library/ast.html">Official AST documentation</a></li>
 <li><a href="http://greentreesnakes.readthedocs.io/en/latest/">Green Tree Snakes - the missing Python AST docs</a></li>
+<li>DEAP: <a href="https://github.com/DEAP/deap">https://github.com/DEAP/deap</a></li>
 
 </ul>
 </section>

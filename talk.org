@@ -19,28 +19,6 @@
    [[./img/logo-ticketea-white.svg]]
 
 
-* TODO First of all...
-** What will you do once you automate all your work?
-[[https://www.reddit.com/r/cscareerquestions/comments/4km3yc/finally_fired_after_6_years/][Finally fired after 6 years]]
-#+NAME:   fig:Fired_after_6_years
-[[./img/Automate.png]]
-
-* TODO What is “To program”?
-*** Source code
-#+BEGIN_SRC python
-def x(a, b, c):
-    return (a + b) * c
-#+END_SRC
-*** Bytecode
-#+BEGIN_SRC python
->>> x = lambda a,b,c: (a + b) * c
->>> x.__code__.co_code                                                                                                                             
-b'|\x00\x00|\x01\x00\x17|\x02\x00\x14S'
-#+END_SRC
-*** AST
-#+NAME:   fig:AST
-[[./img/binop.png]]
-
 * TDD
 
 ** 
@@ -64,46 +42,8 @@ def test_sort(self):
     self.assertEqual(my_list, list((0, 2, 3, 4)))
 #+END_SRC
 
-** TODO 
-#+BEGIN_SRC python
-def test_sort(self):
-    my_list = list((3, 4, 2, 0))
-    my_list.sort()
-    self.assertEqual(my_list, list((0, 2, 3, 4)))
-#+END_SRC
-
-** TODO 
-#+BEGIN_SRC python
-class myList(list):
-    def sort(self):
-        x = list(self[-1], self[-2], self[0], self[1])
-        self[0] = x[0]
-        self[1] = x[1]
-        self[2] = x[2]
-        self[3] = x[3]
-__builtins__.list = myList
-
-def test_sort(self):
-    my_list = list((3, 4, 2, 0))
-    my_list.sort()
-    self.assertEqual(my_list, list((0, 2, 3, 4)))
-#+END_SRC
 ** Program testing can be used to show the presence of bugs, but never to show their absence!
 Edgar Dijkstra
-
-* TODO Lots of fuzz with Deep Learning lately
-** Alphago
-#+NAME:   fig:Alphagologo
-[[./img/Alphago_logo_Reversed.svg]]
-
-** Wired Cover Jun 2016
-#+NAME:   fig:wiredcover2016
-[[./img/wired_cover.png]]
-#+BEGIN_NOTES
-  * Portada de Wired de Junio de este año (2016)
-  * Por lo que vemos en la portada, Wired debe haber conseguido generar portadas
-    por ordenador antes o después de haber echado a su diseñador. no?
-#+END_NOTES
 
 * Can machines do TDD?
 * A very small example
@@ -166,19 +106,6 @@ from ast import (
     BoolOp, UnaryOp, Or, And, Not, Name, Load, Module, Expr,
     NodeTransformer, NodeVisitor, copy_location, Subscript, Index, Str, dump
 )
-#+END_SRC
-** TODO 
-#+BEGIN_SRC python
-def create_variable(variable_name):
-    assert variable_name in variable_names
-    return Name(id=variable_name, ctx=Load())
-
-def create_not(tree):
-    return UnaryOp(op=Not(), operand=tree)
-
-def create_or(args):
-    assert len(args) > 1
-    return BoolOp(Or(), args)
 #+END_SRC
 ** Visitor and Transformer
 *** 
@@ -262,10 +189,6 @@ def mutate(tree):
     return Mutator().visit(tree)
 #+END_SRC
 
-** Good news
-*** DEAP
-    https://github.com/DEAP/deap
-
 * Neural Networks
 ** Mimics the brain
 ** Use lots of data as training to learn
@@ -274,16 +197,6 @@ def mutate(tree):
 #+NAME:   fig:Neural network
 [[./img/neural_network.jpg]]
 ** Hidden layers can be very complex, depending on your needs
-** 
-#+ATTR_REVEAL: :frag (appear)
-#+NAME:   fig:a man is talking on a cell phone near a building
-[[./img/nn_ex1.jpg]]
- * a man is talking on a cell phone near a building.
-** 
-#+ATTR_REVEAL: :frag (appear)
-#+NAME:   fig:a white dog is running on gravel away from two people and a black and brown dog
-[[./img/nn_ex2.jpg]]
- * a white dog is running on gravel away from two people and a black and brown dog.
 ** 
 #+ATTR_REVEAL: :frag (appear)
 #+NAME:   fig:a man is sorting his fruit at a fruit stand
@@ -331,8 +244,6 @@ Edgar Dijkstra
 [[./img/localmax.png]]
 ** Computers not yet capable to “reason”
 ** Programming requires “Divide and Conquer”
-** That was just boolean logic
-What about detecting infinite loops in huge programs?
 ** How do we demonstrate the absence of bugs?
 ** What is being done?
 *** Python interpreter in ML (Predicts the output of the program)
@@ -340,3 +251,4 @@ What about detecting infinite loops in huge programs?
 ** Bibliography
  * [[https://docs.python.org/2/library/ast.html][Official AST documentation]]
  * [[http://greentreesnakes.readthedocs.io/en/latest/][Green Tree Snakes - the missing Python AST docs]]
+ * DEAP: https://github.com/DEAP/deap
