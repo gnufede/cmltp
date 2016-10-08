@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Can machines learn to program?</title>
+<meta name="author" content="(Federico Mon)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/white.css" id="theme"/>
+
+<link rel="stylesheet" href="./custom.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Can machines learn to program?</h1><h2 class="author">Federico Mon</h2><h2 class="date">2016-10-08</h2><p class="date">Created: 2016-10-08 Sat 11:10</p>
+</section>
+
+<section>
+<section id="slide-orgheadline1" data-background="#f2600f">
+<h2 id="orgheadline1"></h2>
+
+<div id="orgparagraph1" class="figure">
+<p><object type="image/svg+xml" data="./img/logo-ticketea-white.svg" >
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline5">
+<h2 id="orgheadline5">TDD</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+</div></section>
+<section id="slide-orgheadline2">
+<h3 id="orgheadline2"></h3>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">test_sort</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">my_list</span> = <span style="color: #3a81c3;">[</span><span style="color: #4e3163;">4</span>, <span style="color: #4e3163;">3</span>, <span style="color: #4e3163;">2</span>, <span style="color: #4e3163;">0</span><span style="color: #3a81c3;">]</span>
+    my_list.sort<span style="color: #3a81c3;">()</span>
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.assertEqual<span style="color: #3a81c3;">(</span>my_list, <span style="color: #6c3163;">[</span><span style="color: #4e3163;">0</span>, <span style="color: #4e3163;">2</span>, <span style="color: #4e3163;">3</span>, <span style="color: #4e3163;">4</span><span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgheadline3">
+<h3 id="orgheadline3"></h3>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">myList</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">list</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">sort</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.reverse<span style="color: #3a81c3;">()</span>
+__builtins__.<span style="color: #3a81c3;">list</span> = myList
+
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">test_sort</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">my_list</span> = <span style="color: #3a81c3;">list</span><span style="color: #3a81c3;">(</span><span style="color: #6c3163;">(</span><span style="color: #4e3163;">4</span>, <span style="color: #4e3163;">3</span>, <span style="color: #4e3163;">2</span>, <span style="color: #4e3163;">0</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
+    my_list.sort<span style="color: #3a81c3;">()</span>
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.assertEqual<span style="color: #3a81c3;">(</span>my_list, <span style="color: #3a81c3;">list</span><span style="color: #6c3163;">(</span><span style="color: #2d9574;">(</span><span style="color: #4e3163;">0</span>, <span style="color: #4e3163;">2</span>, <span style="color: #4e3163;">3</span>, <span style="color: #4e3163;">4</span><span style="color: #2d9574;">)</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgheadline4">
+<h3 id="orgheadline4">Program testing can be used to show the presence of bugs, but never to show their absence!</h3>
+<p>
+Edgar Dijkstra
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline6">
+<h2 id="orgheadline6">Can machines do TDD?</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline13">
+<h2 id="orgheadline13">A very small example</h2>
+<div class="outline-text-2" id="text-orgheadline13">
+</div></section>
+<section id="slide-orgheadline7">
+<h3 id="orgheadline7">Basic Multiplexor</h3>
+
+<div id="orgparagraph2" class="figure">
+<p><img src="./img/Multiplexer.png" alt="Multiplexer.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgheadline8">
+<h3 id="orgheadline8"></h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash">A B Sel | Out
+-------------
+<span style="color: #4e3163;">0</span> <span style="color: #4e3163;">0</span>   <span style="color: #4e3163;">0</span> |   <span style="color: #4e3163;">0</span>
+<span style="color: #4e3163;">0</span> <span style="color: #4e3163;">0</span>   <span style="color: #4e3163;">1</span> |   <span style="color: #4e3163;">0</span>
+<span style="color: #4e3163;">0</span> <span style="color: #4e3163;">1</span>   <span style="color: #4e3163;">0</span> |   <span style="color: #4e3163;">0</span>
+<span style="color: #4e3163;">0</span> <span style="color: #4e3163;">1</span>   <span style="color: #4e3163;">1</span> |   <span style="color: #4e3163;">1</span>
+<span style="color: #4e3163;">1</span> <span style="color: #4e3163;">0</span>   <span style="color: #4e3163;">0</span> |   <span style="color: #4e3163;">1</span>
+<span style="color: #4e3163;">1</span> <span style="color: #4e3163;">0</span>   <span style="color: #4e3163;">1</span> |   <span style="color: #4e3163;">0</span>
+<span style="color: #4e3163;">1</span> <span style="color: #4e3163;">1</span>   <span style="color: #4e3163;">0</span> |   <span style="color: #4e3163;">1</span>
+<span style="color: #4e3163;">1</span> <span style="color: #4e3163;">1</span>   <span style="color: #4e3163;">1</span> |   <span style="color: #4e3163;">1</span>
+</pre>
+</div>
+</section>
+<section id="slide-orgheadline9">
+<h3 id="orgheadline9"></h3>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #3a81c3;">(</span>a <span style="color: #3a81c3; font-weight: bold;">and</span> <span style="color: #3a81c3; font-weight: bold;">not</span> s<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">or</span> <span style="color: #3a81c3;">(</span>b <span style="color: #3a81c3; font-weight: bold;">and</span> s<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</section>
+<section id="slide-orgheadline10">
+<h3 id="orgheadline10">AST</h3>
+
+<div id="orgparagraph3" class="figure">
+<p><img src="./img/multiplexer_ast.png" alt="multiplexer_ast.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgheadline11">
+<h3 id="orgheadline11"></h3>
+
+<div id="orgparagraph4" class="figure">
+<p><img src="./img/prefix_notation.png" alt="prefix_notation.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgheadline12">
+<h3 id="orgheadline12">Prefix notation</h3>
+<p>
+OR AND A NOT S AND B S
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline20">
+<h2 id="orgheadline20">AST</h2>
+<div class="outline-text-2" id="text-orgheadline20">
+</div></section>
+<section id="slide-orgheadline14">
+<h3 id="orgheadline14"></h3>
+<div class="org-src-container">
+
+<pre  class="src src-python">&gt;&gt;&gt; <span style="color: #3a81c3; font-weight: bold;">import</span> ast
+&gt;&gt;&gt; <span style="color: #715ab1;">tree</span> = ast.parse<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"(a and not s) or (b and s)"</span><span style="color: #3a81c3;">)</span>
+&gt;&gt;&gt; <span style="color: #715ab1;">expr</span> = ast.Expression<span style="color: #3a81c3;">(</span>tree.body<span style="color: #6c3163;">[</span><span style="color: #4e3163;">0</span><span style="color: #6c3163;">]</span>.value<span style="color: #3a81c3;">)</span>
+&gt;&gt;&gt; <span style="color: #715ab1;">compiled</span> = <span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>expr, filename=<span style="color: #2d9574;">"&lt;ast&gt;"</span>, mode=<span style="color: #2d9574;">"eval"</span><span style="color: #3a81c3;">)</span>
+&gt;&gt;&gt; <span style="color: #715ab1;">a</span> = <span style="color: #4e3163;">True</span>
+&gt;&gt;&gt; <span style="color: #715ab1;">b</span> = <span style="color: #4e3163;">False</span>
+&gt;&gt;&gt; <span style="color: #715ab1;">s</span> = <span style="color: #4e3163;">True</span>
+&gt;&gt;&gt; <span style="color: #715ab1;">d</span> = <span style="color: #3a81c3;">eval</span><span style="color: #3a81c3;">(</span>compiled<span style="color: #3a81c3;">)</span>
+&gt;&gt;&gt; <span style="color: #3a81c3; font-weight: bold;">print</span><span style="color: #3a81c3;">(</span>d<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #4e3163;">False</span>
+</pre>
+</div>
+</section>
+<section id="slide-orgheadline15">
+<h3 id="orgheadline15"></h3>
+<div class="org-src-container">
+
+<pre  class="src src-python">&gt;&gt;&gt; <span style="color: #3a81c3; font-weight: bold;">import</span> meta
+&gt;&gt;&gt; <span style="color: #715ab1;">source_from_ast</span> = meta.dump_python_source<span style="color: #3a81c3;">(</span>tree<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #3a81c3;">(</span><span style="color: #6c3163;">(</span>a <span style="color: #3a81c3; font-weight: bold;">and</span> <span style="color: #2d9574;">(</span><span style="color: #3a81c3; font-weight: bold;">not</span> s<span style="color: #2d9574;">)</span><span style="color: #6c3163;">)</span> <span style="color: #3a81c3; font-weight: bold;">or</span> <span style="color: #6c3163;">(</span>b <span style="color: #3a81c3; font-weight: bold;">and</span> s<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</section>
+<section id="slide-orgheadline16">
+<h3 id="orgheadline16"></h3>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">from</span> ast <span style="color: #3a81c3; font-weight: bold;">import</span> <span style="color: #3a81c3;">(</span>
+    BoolOp, UnaryOp, Or, And, Not, Name, Load, Module, Expr,
+    NodeTransformer, NodeVisitor, copy_location, Subscript, Index, Str, dump
+<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</section>
+<section id="slide-orgheadline19">
+<h3 id="orgheadline19">Visitor and Transformer</h3>
+<div class="outline-text-3" id="text-orgheadline19">
+</div></section>
+<section id="slide-orgheadline17">
+<h4 id="orgheadline17"></h4>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Visitor</span><span style="color: #3a81c3;">(</span>NodeVisitor<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">length</span> = <span style="color: #4e3163;">0</span>
+
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">generic_visit</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, node<span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.length += <span style="color: #4e3163;">1</span>
+        NodeVisitor.generic_visit<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, node<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</section>
+<section id="slide-orgheadline18">
+<h4 id="orgheadline18"></h4>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">get_len</span><span style="color: #3a81c3;">(</span>tree<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">v</span> = Visitor<span style="color: #3a81c3;">()</span>
+    v.visit<span style="color: #3a81c3;">(</span>tree<span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">return</span> v.length
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline31">
+<h2 id="orgheadline31">Genetic Programming</h2>
+<div class="outline-text-2" id="text-orgheadline31">
+</div></section>
+<section id="slide-orgheadline21">
+<h3 id="orgheadline21">Individuals</h3>
+<ul>
+<li class="fragment appear">Each one has its own DNA</li>
+<li class="fragment appear">In nature: "&#x2026;GATTACA&#x2026;"</li>
+<li class="fragment appear">In Genetic Algorithms, it can be "&#x2026;0010100&#x2026;"</li>
+<li class="fragment appear">In our case, let's say it's: "OR AND A NOT S AND B S"</li>
+<li class="fragment appear">So, why not simply the python AST?</li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li>Notación Polaca</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-orgheadline22">
+<h3 id="orgheadline22">As Genetic Algorithms</h3>
+<ul>
+<li class="fragment appear">Start with a population</li>
+<li class="fragment appear">Evaluate them</li>
+<li class="fragment appear">Select some individuals</li>
+<li class="fragment appear">Mix them</li>
+<li class="fragment appear">Mutate them</li>
+<li class="fragment appear">Repeat</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline23">
+<h3 id="orgheadline23">Evaluation</h3>
+<ul>
+<li class="fragment appear">In our case, how many unit tests the program passes</li>
+<li class="fragment appear">For our multiplexor, there are only 8 unit tests</li>
+
+</ul>
+
+</section>
+<section id="slide-orgheadline24">
+<h3 id="orgheadline24">Mix them</h3>
+<p>
+You would need to extract two parts of two trees and interchange them.
+</p>
+</section>
+<section id="slide-orgheadline25">
+<h3 id="orgheadline25"></h3>
+
+<div id="orgparagraph5" class="figure">
+<p><img src="./img/genetic_mix.png" alt="genetic_mix.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgheadline30">
+<h3 id="orgheadline30">Mutate them</h3>
+<div class="outline-text-3" id="text-orgheadline30">
+</div></section>
+<section id="slide-orgheadline26">
+<h4 id="orgheadline26"></h4>
+
+<div id="orgparagraph6" class="figure">
+<p><img src="./img/genetic_mutate.png" alt="genetic_mutate.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgheadline27">
+<h4 id="orgheadline27">Transformer</h4>
+</section>
+<section id="slide-orgheadline28">
+<h4 id="orgheadline28"></h4>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Mutator</span><span style="color: #3a81c3;">(</span>NodeTransformer<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">depth</span> = <span style="color: #4e3163;">0</span>
+
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">some_visit</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, node<span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.depth &gt; <span style="color: #4e3163;">2</span> <span style="color: #3a81c3; font-weight: bold;">and</span> random.randrange<span style="color: #3a81c3;">(</span><span style="color: #4e3163;">9</span><span style="color: #3a81c3;">)</span> &gt; <span style="color: #4e3163;">5</span>:
+            <span style="color: #3a81c3; font-weight: bold;">return</span> create_something<span style="color: #3a81c3;">(</span>max_depth=<span style="color: #4e3163;">3</span><span style="color: #3a81c3;">)</span>
+        <span style="color: #3a81c3; font-weight: bold;">else</span>:
+            <span style="color: #3a81c3; font-weight: bold;">self</span>.generic_visit<span style="color: #3a81c3;">(</span>node<span style="color: #3a81c3;">)</span>
+            <span style="color: #3a81c3; font-weight: bold;">return</span> node
+
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">visit_Name</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, node<span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.depth += <span style="color: #4e3163;">1</span>
+        <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.some_visit<span style="color: #3a81c3;">(</span>node<span style="color: #3a81c3;">)</span>
+
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">visit_UnaryOp</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, node<span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.depth += <span style="color: #4e3163;">1</span>
+        <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.some_visit<span style="color: #3a81c3;">(</span>node<span style="color: #3a81c3;">)</span>
+
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">visit_BoolOp</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, node<span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.depth += <span style="color: #4e3163;">1</span>
+        <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.some_visit<span style="color: #3a81c3;">(</span>node<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</section>
+<section id="slide-orgheadline29">
+<h4 id="orgheadline29"></h4>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">mutate</span><span style="color: #3a81c3;">(</span>tree<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> Mutator<span style="color: #3a81c3;">()</span>.visit<span style="color: #3a81c3;">(</span>tree<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline41">
+<h2 id="orgheadline41">Neural Networks</h2>
+<div class="outline-text-2" id="text-orgheadline41">
+</div></section>
+<section id="slide-orgheadline32">
+<h3 id="orgheadline32">Mimics the brain</h3>
+</section>
+<section id="slide-orgheadline33">
+<h3 id="orgheadline33">Use lots of data as training to learn</h3>
+</section>
+<section id="slide-orgheadline34">
+<h3 id="orgheadline34">Input layer, hidden layers, output layer</h3>
+</section>
+<section id="slide-orgheadline35">
+<h3 id="orgheadline35"></h3>
+
+<div id="orgparagraph7" class="figure">
+<p><img src="./img/neural_network.jpg" alt="neural_network.jpg" />
+</p>
+</div>
+</section>
+<section id="slide-orgheadline36">
+<h3 id="orgheadline36">Hidden layers can be very complex, depending on your needs</h3>
+</section>
+<section id="slide-orgheadline37">
+<h3 id="orgheadline37"></h3>
+
+<div id="orgparagraph8" class="figure">
+<p><img src="./img/nn_ex3.jpg" alt="nn_ex3.jpg" class="fragment (appear)" />
+</p>
+</div>
+<ul>
+<li>a man is sorting his fruit at a fruit stand</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline38">
+<h3 id="orgheadline38"></h3>
+
+<div id="orgparagraph9" class="figure">
+<p><img src="./img/neural_network_image.jpg" alt="neural_network_image.jpg" />
+</p>
+</div>
+</section>
+<section id="slide-orgheadline39">
+<h3 id="orgheadline39"></h3>
+
+<div id="orgparagraph10" class="figure">
+<p><img src="./img/neural_network_code.jpg" alt="neural_network_code.jpg" />
+</p>
+</div>
+</section>
+<section id="slide-orgheadline40">
+<h3 id="orgheadline40">Not Accomplished :(</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline46">
+<h2 id="orgheadline46">“When in doubt, use brute force”</h2>
+<p>
+Ken Thompson
+</p>
+</section>
+<section id="slide-orgheadline42">
+<h3 id="orgheadline42">Is it any better than random?</h3>
+<ul>
+<li class="fragment appear">We should find out</li>
+<li class="fragment appear">Let's generate random trees until we reach our goal.</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline43">
+<h3 id="orgheadline43"></h3>
+
+<div id="orgparagraph11" class="figure">
+<p><img src="./img/madness.jpg" alt="madness.jpg" />
+</p>
+</div>
+</section>
+<section id="slide-orgheadline44">
+<h3 id="orgheadline44">Genetic programming results:</h3>
+<ul>
+<li class="fragment appear">Population size 100: average: 3.51 secs</li>
+<li class="fragment appear">Population size 10: average: 4.63 secs</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline45">
+<h3 id="orgheadline45">Random trees:</h3>
+<p class="fragment (appear)">
+Average 100 executions: 3.40 secs
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline59">
+<h2 id="orgheadline59">Answer</h2>
+<div class="outline-text-2" id="text-orgheadline59">
+</div></section>
+<section id="slide-orgheadline47" data-background="#000000">
+<h3 id="orgheadline47"></h3>
+
+<div id="orgparagraph12" class="figure">
+<p><img src="./img/no.png" alt="no.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgheadline48">
+<h3 id="orgheadline48">Not yet at least</h3>
+</section>
+<section id="slide-orgheadline49">
+<h3 id="orgheadline49">“In the discrete world of computing, there is no meaningful metric in which "small" changes and "small" effects go hand in hand, and there never will be.”</h3>
+<p>
+Edgar Dijkstra
+</p>
+</section>
+<section id="slide-orgheadline50">
+<h3 id="orgheadline50">“Perfect is the enemy of good”</h3>
+<p class="fragment (appear)">
+Voltaire
+</p>
+</section>
+<section id="slide-orgheadline51">
+<h3 id="orgheadline51"></h3>
+
+<div id="orgparagraph13" class="figure">
+<p><img src="./img/localmax.png" alt="localmax.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgheadline52">
+<h3 id="orgheadline52">Computers not yet capable to “reason”</h3>
+</section>
+<section id="slide-orgheadline53">
+<h3 id="orgheadline53">Programming requires “Divide and Conquer”</h3>
+</section>
+<section id="slide-orgheadline54">
+<h3 id="orgheadline54">How do we demonstrate the absence of bugs?</h3>
+</section>
+<section id="slide-orgheadline57">
+<h3 id="orgheadline57">What is being done?</h3>
+<div class="outline-text-3" id="text-orgheadline57">
+</div></section>
+<section id="slide-orgheadline56">
+<h4 id="orgheadline56">Python interpreter in ML (Predicts the output of the program)</h4>
+<div class="outline-text-4" id="text-orgheadline56">
+</div><ul class="org-ul"><li><a id="orgheadline55"></a><a href="https://github.com/wojciechz/learning_to_execute">https://github.com/wojciechz/learning_to_execute</a><br  /></li></ul>
+</section>
+<section id="slide-orgheadline58">
+<h3 id="orgheadline58">Bibliography</h3>
+<ul>
+<li><a href="https://docs.python.org/2/library/ast.html">Official AST documentation</a></li>
+<li><a href="http://greentreesnakes.readthedocs.io/en/latest/">Green Tree Snakes - the missing Python AST docs</a></li>
+<li>DEAP: <a href="https://github.com/DEAP/deap">https://github.com/DEAP/deap</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline60">
+<h2 id="orgheadline60">To be continued&#x2026;?</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
